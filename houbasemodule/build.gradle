@@ -1,36 +1,33 @@
-apply plugin: 'com.android.application'
-
+apply plugin: 'com.android.library'
+def cfg = rootProject.ext.android
 android {
-    compileSdkVersion 27
-
-
+    compileSdkVersion cfg.compileSdkVersion //SDK的版本号，也就是API Level，例如API-19、API-20、API-21等等
+    buildToolsVersion cfg.buildToolsVersion //构建工具的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于..your_sdk_path/build-tools/XX.XX.XX
 
     defaultConfig {
-        applicationId "com.base.hyl.houbasemodule"
-        minSdkVersion 23
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion cfg.minSdkVersion  //最低SDK 兼容
+        targetSdkVersion cfg.targetSdkVersion //目标版本
+        versionCode cfg.versionCode//更新次数
+        versionName cfg.versionName//版本号
+        /*设置 URL 参数*/
+        if (isDebug.toBoolean()) {
+            //debug模式
+            buildConfigField "String", "AlphaUrl", "\"${url["debug"]}\""
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        } else {
+            //release模式
+            buildConfigField "String", "AlphaUrl", "\"${url["release"]}\""
 
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
     }
+
 
 }
-
+/*依赖库*/
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile project(':librarymodule')
 
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }

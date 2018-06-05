@@ -1,1 +1,1 @@
-include ':app', ':houbasemodule', ':baserecyclerview'
+include ':app', ':houbasemodule', ':baserecyclerview', ':librarymodule'
