@@ -2,7 +2,7 @@ package com.base.hyl.houbasemodule.utils;
 
 import android.util.Log;
 
-
+import com.base.hyl.houbasemodule.BuildConfig;
 
 
 /**
@@ -10,7 +10,7 @@ import android.util.Log;
  */
 public class MyLog {
     public static void wtf(String tag, String msg) {
-        if (App.ISDEBUG) {//不是调试模式时则不显示所有log
+        if (BuildConfig.IS_DEBUG) {//不是调试模式时则不显示所有log
             Log.wtf(tag, msg);
         }
     }

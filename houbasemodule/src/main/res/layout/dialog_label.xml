@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:id="@+id/rl_root"
+    >
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/color333333"
+        android:text="请选择分类"
+        android:textSize="17sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:background="@color/coloreeeeee"
+        android:paddingLeft="@dimen/margin12"
+        />
+    <GridView
+        android:id="@+id/gv_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="20dp"
+        android:columnWidth="100dp"
+        android:paddingLeft="@dimen/margin4"
+        android:horizontalSpacing="1dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="2dp"
+        android:visibility="gone"></GridView>
+
+    <ListView
+        android:id="@+id/lv_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="12dp"
+        android:divider="@color/coloreeeeee"
+        android:dividerHeight="@dimen/dimen_1dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_reset"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_rectangle_top"
+            android:text="重置"
+            android:textColor="#ff5722"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#ff5722"
+            android:text="确认"
+            android:textColor="@android:color/white"
+            android:textSize="17sp" />
+    </LinearLayout>
+</RelativeLayout>

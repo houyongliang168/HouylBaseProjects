@@ -1,3 +1,64 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="loading_top">150dp</dimen>
+    <dimen name="margin15">15dp</dimen>
+    <dimen name="margin17">17dp</dimen>
+
+    <dimen name="text16">16sp</dimen>
+    <dimen name="text12">12sp</dimen>
+    <dimen name="text14">14sp</dimen>
+
+    <dimen name="line_width">0.5dp</dimen>
+    <dimen name="margin11">11dp</dimen>
+    <dimen name="text13">13sp</dimen>
+    <dimen name="margin20">20dp</dimen>
+    <dimen name="dimen_120dp">120dp</dimen>
+    <dimen name="dimen_80dp">80dp</dimen>
+    <dimen name="dimen_1dp">1dp</dimen>
+
+    <dimen name="dimen_12dp">12dp</dimen>
+    <dimen name="margin7">7dp</dimen>
+    <dimen name="margin16">16dp</dimen>
+    <dimen name="margin21">16dp</dimen>
+    <dimen name="dimen_45dp">45dp</dimen>
+    <dimen name="dimen_40dp">40dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="dimen_60dp">60dp</dimen>
+    <dimen name="text_18sp">18sp</dimen>
+    <dimen name="text_14sp">14sp</dimen>
+    <dimen name="dimen_50dp">50dp</dimen>
+    <dimen name="margin10">10dp</dimen>
+    <dimen name="dimen_30dp">30dp</dimen>
+    <dimen name="margin6">6dp</dimen>
+    <dimen name="margin5">5dp</dimen>
+    <dimen name="dimen_34dp">34dp</dimen>
+    <dimen name="text11">11sp</dimen>
+    <dimen name="dimen_24dp">24dp</dimen>
+    <dimen name="margin40">40dp</dimen>
+    <dimen name="margin118">118dp</dimen>
+    <dimen name="margin41">41dp</dimen>
+    <dimen name="dimen_17dp">17dp</dimen>
+    <dimen name="text17">17dp</dimen>
+    <dimen name="dimen_100dp">100dp</dimen>
+    <dimen name="text15">15sp</dimen>
+    <dimen name="text30">30sp</dimen>
+    <dimen name="margin4">4dp</dimen>
+    <dimen name="margin8">8dp</dimen>
+    <dimen name="margin12">12dp</dimen>
+    <dimen name="dimen_39dp">39dp</dimen>
+    <dimen name="margin52">52dp</dimen>
+    <dimen name="text10">10sp</dimen>
+    <dimen name="dimen_38dp">38dp</dimen>
+    <dimen name="margin38">38dp</dimen>
+    <dimen name="margin28">28dp</dimen>
+    <dimen name="margin50">50dp</dimen>
+    <dimen name="text22">22sp</dimen>
+    <dimen name="margin14">14dp</dimen>
+    <dimen name="margin22">22dp</dimen>
+    <dimen name="dimen_62dp">62dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="margin30">30dp</dimen>
+    <dimen name="margin125">125dp</dimen>
+    <dimen name="dimen_16dp">16dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="dimen_15dp">15dp</dimen>
 </resources>

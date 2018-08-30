@@ -1,7 +1,8 @@
 package com.base.hyl.houbasemodule.utils;
 import android.widget.Toast;
 
-import com.taikanglife.isalessystem.App;
+import com.base.hyl.houbasemodule.framework.tools.ApplicationToolss;
+
 
 /**
  * Created by zhaoyu on 2017/4/18.类说明：自定义吐司
@@ -13,7 +14,8 @@ public class MyToast {
 	
 	public static void showShort(String msg){
 		if (toast == null) {
-            toast = Toast.makeText(App.getContext(), msg, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(ApplicationToolss.getInstance().getApplication(), null, Toast.LENGTH_SHORT);
+            toast.setText(msg);
         } else {
             toast.setText(msg);
         }
@@ -21,7 +23,8 @@ public class MyToast {
 	}
     public static void showLong(String msg){
         if (toast == null) {
-            toast = Toast.makeText(App.getContext(), msg, Toast.LENGTH_LONG);
+            toast = Toast.makeText(ApplicationToolss.getInstance().getApplication(), null, Toast.LENGTH_LONG);
+            toast.setText(msg);
         } else {
             toast.setText(msg);
         }

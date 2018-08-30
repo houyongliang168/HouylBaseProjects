@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="loading_top">200dp</dimen>
+
+    <dimen name="text12">16sp</dimen>
+    <dimen name="text14">18sp</dimen>
+    <dimen name="text16">20sp</dimen>
+    <dimen name="text30">34sp</dimen>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/basemodule_bg_manager_after" android:state_selected="true" />
+    <item android:drawable="@mipmap/basemodule_bg_manager_after" android:state_focused="true" />
+    <item android:drawable="@mipmap/basemodule_bg_manager_after" android:state_pressed="true" />
+    <item android:drawable="@mipmap/basemodule_bg_manager_after" android:state_checked="true" />
+
+    <item android:drawable="@mipmap/basemodule_bg_manager_before" />
+    <!--<item  android:drawable="@drawable/bg_customer_manager_import" />-->
+</selector>

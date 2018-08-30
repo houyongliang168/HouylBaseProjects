@@ -16,10 +16,13 @@ android {
 
     }
     compileSdkVersion cfg.compileSdkVersion //SDK的版本号，也就是API Level，例如API-19、API-20、API-21等等
-    buildToolsVersion cfg.buildToolsVersion //构建工具的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于..your_sdk_path/build-tools/XX.XX.XX
+    //构建工具的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于..your_sdk_path/build-tools/XX.XX.XX
     dexOptions {//Dex 选项配置
         jumboMode = true //代码超过 65535 ，开启才能构建成功
     }
+
+    compileSdkVersion cfg.compileSdkVersion
+    buildToolsVersion cfg.buildToolsVersion
     defaultConfig {
         if (isModuleRun.toBoolean()) {
             applicationId appId["recyclerview"]
@@ -59,10 +62,11 @@ android {
         }
     }
 
+
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':houbasemodule')
 
 }

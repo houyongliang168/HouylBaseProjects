@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/basemodule_bg_roundborder_white"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/ll_warn_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="21dp">
+
+            <TextView
+                android:id="@+id/tv_warn_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lineSpacingExtra="5dp"
+                android:maxLines="3"
+                android:paddingLeft="@dimen/margin15"
+                android:paddingRight="@dimen/margin15"
+                android:textColor="@color/color333333"
+                android:textSize="@dimen/text14" />
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/view_warn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_width"
+            android:layout_below="@+id/ll_warn_msg"
+            android:layout_marginTop="@dimen/margin17"
+            android:background="@color/coloreeeeee" />
+
+        <TextView
+            android:id="@+id/tv_warn_true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_warn"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/dialog_bt_sure"
+            android:textColor="@color/textff5722"
+            android:textSize="@dimen/text14" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color7f7f7f"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:gravity="bottom"
+    android:orientation="vertical"
+
+>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:text="@string/choose_lable"
+        android:gravity="center"
+        android:textSize="@dimen/text15"
+        android:textColor="@color/color333333"
+        android:paddingTop="@dimen/margin15"
+        android:paddingBottom="@dimen/margin15"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/colordfdfdf"></View>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorffffff"
+        android:paddingLeft="@dimen/margin5"
+        android:paddingRight="@dimen/margin5"
+        android:paddingBottom="@dimen/margin10"
+
+      ></android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/tv_yes"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:background="@color/colorff5722"
+        android:text="@string/dialog_bt_sure"
+        android:textSize="@dimen/text15"
+        android:textColor="@color/colorffffff"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:clickable="true"/>
+
+</LinearLayout>

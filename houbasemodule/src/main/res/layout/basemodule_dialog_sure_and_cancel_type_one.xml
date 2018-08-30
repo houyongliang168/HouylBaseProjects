@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/basemodule_bg_roundborder_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/margin20"
+            android:layout_marginRight="@dimen/margin20"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/margin10"
+            android:text="您确定要添加吗？"
+            android:textColor="@color/color666666"
+            android:textSize="@dimen/text15" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <TextView
+                android:id="@+id/dialog_exit_false"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin30"
+                android:layout_marginLeft="@dimen/margin20"
+                android:layout_marginRight="@dimen/margin10"
+                android:layout_weight="1"
+                android:background="@mipmap/basemodule_bg_manager_before"
+                android:gravity="center"
+                android:text="@string/dialog_bt_cancle"
+                android:textColor="@color/textff5722"
+                android:textSize="@dimen/text15" />
+
+            <TextView
+                android:id="@+id/dialog_exit_true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin30"
+                android:layout_marginLeft="@dimen/margin10"
+                android:layout_marginRight="@dimen/margin20"
+                android:layout_weight="1"
+                android:background="@mipmap/basemodule_bg_manager_after"
+                android:gravity="center"
+                android:text="@string/dialog_bt_sure"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text15" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

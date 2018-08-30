@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">HouBaseModule</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="app_name">BaseModule</string>
+    <string name="dialog_bt_sure">确定</string>
+    <string name="dialog_bt_cancle">取消</string>
+    <string name="basemodule_netError">网络请求失败，请检查您的网络设置</string>
+    <string name="choose_lable">选择标签</string>
 </resources>

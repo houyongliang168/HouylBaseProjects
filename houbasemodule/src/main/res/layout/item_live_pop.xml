@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/selector_bg_lv">
+<TextView
+    android:id="@+id/tv_item_live"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:textColor="@drawable/selector_live_pop"
+    android:textSize="@dimen/text15"
+    android:gravity="center"
+    />
+</LinearLayout>

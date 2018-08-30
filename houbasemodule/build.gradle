@@ -1,9 +1,11 @@
 apply plugin: 'com.android.library'
 def cfg = rootProject.ext.android
+def librarys = rootProject.ext.dependencies
 android {
     compileSdkVersion cfg.compileSdkVersion //SDK的版本号，也就是API Level，例如API-19、API-20、API-21等等
     //构建工具的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于..your_sdk_path/build-tools/XX.XX.XX
-
+    compileSdkVersion cfg.compileSdkVersion
+    buildToolsVersion cfg.buildToolsVersion
     defaultConfig {
         minSdkVersion cfg.minSdkVersion  //最低SDK 兼容
         targetSdkVersion cfg.targetSdkVersion //目标版本
@@ -13,11 +15,13 @@ android {
         if (isDebug.toBoolean()) {
             //debug模式
             buildConfigField "String", "AlphaUrl", "\"${url["debug"]}\""
-
+            buildConfigField 'boolean','IS_DEBUG','true'
+            buildConfigField("int", "INTERNET_REQUEST_TIME", "120000")//网络请求时间
         } else {
             //release模式
             buildConfigField "String", "AlphaUrl", "\"${url["release"]}\""
-
+            buildConfigField 'boolean','IS_DEBUG','false'
+            buildConfigField("int", "INTERNET_REQUEST_TIME", "30000")//网络请求时间      30s
         }
 
     }
@@ -28,6 +32,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+//    librarys.each { k, v -> compile v }
     compile project(':librarymodule')
 
 }

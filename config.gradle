@@ -5,15 +5,15 @@
  */
 ext{
     android = [
-            compileSdkVersion: 26,
+            compileSdkVersion: 25,
             minSdkVersion    : 16,
-            targetSdkVersion : 26,
-            buildToolsVersion: "26.0.2",
+            targetSdkVersion : 25,
+            buildToolsVersion: "25.0.1",
             versionCode      : 1,
             versionName      : "1.6.6 我来测试的"
     ]
 
-    appId = ["app"  : "com.wustor.androidcomponent",
+    appId = ["app"  : "com.base.hyl.houylbaseprojects",
              "recyclerview": "com.base.hyl.baserecyclerview",
              "cart" : "com.wustor.cartmoudle",
              "order": "com.wustor.ordermoudle",
@@ -24,8 +24,51 @@ ext{
     ]
 
     //Version
-    supportLibrary = "26.1.0"
+    supportLibrary = "25.3.1"
     layout_v="1.0.2"
+    _logger_v = "1.12"
+
+    supportLibrary = "25.3.1"
+    statusBarCompat_v = "2.1.3"
+    butterknife_v = "8.4.0"
+    rxjava_v = "1.2.9"
+    rxandroid_v = "1.2.1"
+    retrofit_v = "2.2.0"
+    converter_scalars_v = "2.0.0"
+    logging_interceptor_v = "3.7.0"
+    xbanner_v = "1.2.2"
+    nineoldandroids_v = "2.4.0"
+    glide_v = "3.7.0"
+    glide_transformations_v = "1.0.6"
+    eventbus_v = "3.0.0"
+    jpush_v = "3.0.5"
+    jcore_v = "1.1.2"
+    FlycoTabLayout_Lib_v = "2.1.2@aar"
+    DanmakuFlameMaster_v = "0.5.3"
+    green_dao_v = "3.2.2"
+    greendao_generator_v = "3.1.0"
+    PickerView_v = "3.2.5"
+    okhttp_urlconnection_v = "3.7.0"
+    okhttp3_integration_v = "1.4.0@aar"
+    RecordWave_v = "v1.1.3"
+    MPAndroidChart_v = "v3.0.2"
+    fresco_v = "0.12.0"
+    DatePicker_v = "2.2.0"
+    fastjson_v = "1.2.17"
+    imagepicker_v = "0.5.5"
+    NumberPickerView_v = "1.0.2"
+    commons_codec_v = "20041127.091804"  //?
+    rxpermissions_v = "0.9.0@aar"
+    numberprogressbar_v = "1.4@aar"
+    stetho_v = "1.3.1"
+    subsampling_v = "3.4.1"
+    filedownloader_v = "1.6.9"
+    router_v="1.1.1"
+    layout_v="1.0.2"
+    androidTestCompile_v="2.2.2"
+    glide_transformations_v="2.0.2"
+
+
     dependencies = [
             "multidex"     : "com.android.support:multidex:1.0.2",
             "cardview"     : "com.android.support:cardview-v7:${supportLibrary}",
@@ -33,6 +76,47 @@ ext{
             "suppoutDesign": "com.android.support:design:${supportLibrary}",
             "appcompat"    : "com.android.support:appcompat-v7:${supportLibrary}",
             "layout"       : "com.android.support.constraint:constraint-layout:${layout_v}",
+//            "_logger"              : "com.github.orhanobut:logger:${_logger_v}"
+            "support"              : "com.android.support:support-v4:${supportLibrary}",
+
+//            "butterknife"          : "com.jakewharton:butterknife:${butterknife_v}",
+            "okhttp_urlconnection" : "com.squareup.okhttp3:okhttp-urlconnection:${okhttp_urlconnection_v}",
+            "okhttp3_integration"  : "com.github.bumptech.glide:okhttp3-integration:${okhttp3_integration_v}",
+            "rxjava"               : "io.reactivex:rxjava:${rxjava_v}",
+            "rxandroid"            : "io.reactivex:rxandroid:${rxandroid_v}",
+            "retrofit"             : "com.squareup.retrofit2:retrofit:${retrofit_v}",
+            "converter_gson"       : "com.squareup.retrofit2:converter-gson:${retrofit_v}",
+            "converter_scalars"    : "com.squareup.retrofit2:converter-scalars:${converter_scalars_v}",
+            "adapter_rxjava"       : "com.squareup.retrofit2:adapter-rxjava:${retrofit_v}",
+            "logging_interceptor"  : "com.squareup.okhttp3:logging-interceptor:${logging_interceptor_v}",
+//            "xbanner"              : "com.xhb:xbanner:${xbanner_v}",
+//            "nineoldandroids"      : "com.nineoldandroids:library:${nineoldandroids_v}",
+//            "fresco"               : "com.facebook.fresco:fresco:${fresco_v}",
+            "glide-transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}",
+//            "eventbus"             : "org.greenrobot:eventbus:${eventbus_v}",
+//            "jpush"                : "cn.jiguang.sdk:jpush:${jpush_v}",
+//            "jcore"                : "cn.jiguang.sdk:jcore:${jcore_v}",
+//            "FlycoTabLayout_Lib"   : "com.flyco.tablayout:FlycoTabLayout_Lib:${FlycoTabLayout_Lib_v}",
+//            "DanmakuFlameMaster"   : "com.github.ctiao:DanmakuFlameMaster:${DanmakuFlameMaster_v}",
+//            "commons_codec"        : "commons-codec:commons-codec:${commons_codec_v}",
+            "_logger"              : "com.github.orhanobut:logger:${_logger_v}",
+//            "greendao"             : "org.greenrobot:greendao:${green_dao_v}",
+//            "greendao_generator"   : "org.greenrobot:greendao-generator:${greendao_generator_v}",
+//            "PickerView"           : "com.contrarywind:Android-PickerView:${PickerView_v}",
+//            "rxpermissions"        : "com.tbruyelle.rxpermissions:rxpermissions:${rxpermissions_v}",
+//            "RecordWave"           : "com.github.CarGuo:RecordWave:${RecordWave_v}",
+//            "MPAndroidChart"       : "com.github.PhilJay:MPAndroidChart:${MPAndroidChart_v}",
+//            "DatePicker"           : "cn.aigestudio.datepicker:DatePicker:${DatePicker_v}",
+//            "numberprogressbar"    : "com.daimajia.numberprogressbar:library:${numberprogressbar_v}",
+//            "fastjson"             : "com.alibaba:fastjson:${fastjson_v}",
+//            "imagepicker"          : "com.lzy.widget:imagepicker:${imagepicker_v}",
+//            "stetho"               : "com.facebook.stetho:stetho:${stetho_v}",
+//            "NumberPickerView"     : "cn.carbswang.android:NumberPickerView:${NumberPickerView_v}",
+//            "subsampling"          : "com.davemorrissey.labs:subsampling-scale-image-view:${subsampling_v}",
+//            "filedownloader"       : "com.liulishuo.filedownloader:library:${filedownloader_v}",
+            "glide"                : "com.github.bumptech.glide:glide:${glide_v}",
+            "glide_transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}"
+
     ]
 
 }
