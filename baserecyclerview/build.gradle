@@ -1,17 +1,38 @@
-apply plugin: 'com.android.application'
-
+if (isModuleRun.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+def cfg = rootProject.ext.android
+def appId = rootProject.ext.appId
 android {
-    compileSdkVersion 27
+    packagingOptions {//设置APK包的相关属性
+        exclude 'META-INF/rxjava.properties'
+        //解释
+        //excludes The list of excluded paths. 排除排除路径列表。
+        //pickFirsts The list of paths where the first occurrence is packaged in the APK
+        //exclude(path) Adds an excluded paths.
+        //pickFirst(path) Adds a firstPick path. First pick paths do get packaged in the APK, but only the first occurrence gets packaged.
 
-
-
+    }
+    compileSdkVersion cfg.compileSdkVersion //SDK的版本号，也就是API Level，例如API-19、API-20、API-21等等
+    buildToolsVersion cfg.buildToolsVersion //构建工具的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于..your_sdk_path/build-tools/XX.XX.XX
+    dexOptions {//Dex 选项配置
+        jumboMode = true //代码超过 65535 ，开启才能构建成功
+    }
     defaultConfig {
-        applicationId "com.base.hyl.baserecyclerview"
-        minSdkVersion 23
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        if (isModuleRun.toBoolean()) {
+            applicationId appId["recyclerview"]
+        }
+        multiDexEnabled true //设置 方法数量超 65535
 
+        minSdkVersion cfg.minSdkVersion  //最低sdk 版本
+        targetSdkVersion cfg.targetSdkVersion //目标sdk 版本
+        versionCode cfg.versionCode//更新次数
+        versionName cfg.versionName//版本号
+        resourcePrefix "recyclerview_module_"//xml 文件 加前缀
+
+        //执行单元测试时指定的Runner，在正式打包时并不会使用到
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -23,14 +44,25 @@ android {
         }
     }
 
+    sourceSets {
+        /*设置 不同模式下 的 清单文件*/
+        main {
+            if (isModuleRun.toBoolean()) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml' //注意  manifest 如果 M 大写 会报没有该方法No signature of method: static org.gradle.api.java.archives.Manifest.srcFile() is applicable for argument types:
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    //release 时 debug 目录下文件不需要合并到主工程
+                    exclude '**/debug/**'
+                }
+            }
+        }
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':houbasemodule')
 
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }

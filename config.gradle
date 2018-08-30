@@ -14,7 +14,7 @@ ext{
     ]
 
     appId = ["app"  : "com.wustor.androidcomponent",
-             "goods": "com.wustor.goodsmoudle",
+             "recyclerview": "com.base.hyl.baserecyclerview",
              "cart" : "com.wustor.cartmoudle",
              "order": "com.wustor.ordermoudle",
              "user" : "com.wustor.usermoudle"]
@@ -25,13 +25,14 @@ ext{
 
     //Version
     supportLibrary = "26.1.0"
+    layout_v="1.0.2"
     dependencies = [
-            "multidex"     : "com.android.support:multidex:1.0.1",
+            "multidex"     : "com.android.support:multidex:1.0.2",
             "cardview"     : "com.android.support:cardview-v7:${supportLibrary}",
-            "constraint"   : "com.android.support.constraint:constraint-layout:1.0.2",
             "recyclerview" : "com.android.support:recyclerview-v7:${supportLibrary}",
-            "suppoutDesign": "com.android.support:design:${supportLibrary}"
-
+            "suppoutDesign": "com.android.support:design:${supportLibrary}",
+            "appcompat"    : "com.android.support:appcompat-v7:${supportLibrary}",
+            "layout"       : "com.android.support.constraint:constraint-layout:${layout_v}",
     ]
 
 }
