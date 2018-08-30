@@ -3,7 +3,7 @@
  * 在这里单独处理统一依赖问题
  * 注意需要在根目录的build.gradle中进行引入
  */
-ext{
+ext {
     android = [
             compileSdkVersion: 25,
             minSdkVersion    : 16,
@@ -13,11 +13,11 @@ ext{
             versionName      : "1.6.6 我来测试的"
     ]
 
-    appId = ["app"  : "com.base.hyl.houylbaseprojects",
+    appId = ["app"         : "com.base.hyl.houylbaseprojects",
              "recyclerview": "com.base.hyl.baserecyclerview",
-             "cart" : "com.wustor.cartmoudle",
-             "order": "com.wustor.ordermoudle",
-             "user" : "com.wustor.usermoudle"]
+             "cart"        : "com.wustor.cartmoudle",
+             "order"       : "com.wustor.ordermoudle",
+             "user"        : "com.wustor.usermoudle"]
     url = [
             "debug"  : "debugUrl",
             "release": "releaseUrl"
@@ -25,7 +25,7 @@ ext{
 
     //Version
     supportLibrary = "25.3.1"
-    layout_v="1.0.2"
+    layout_v = "1.0.2"
     _logger_v = "1.12"
 
     supportLibrary = "25.3.1"
@@ -63,23 +63,22 @@ ext{
     stetho_v = "1.3.1"
     subsampling_v = "3.4.1"
     filedownloader_v = "1.6.9"
-    router_v="1.1.1"
-    layout_v="1.0.2"
-    androidTestCompile_v="2.2.2"
-    glide_transformations_v="2.0.2"
+    router_v = "1.1.1"
+    layout_v = "1.0.2"
+    androidTestCompile_v = "2.2.2"
+    glide_transformations_v = "2.0.2"
 
 
     dependencies = [
-            "multidex"     : "com.android.support:multidex:1.0.2",
-            "cardview"     : "com.android.support:cardview-v7:${supportLibrary}",
-            "recyclerview" : "com.android.support:recyclerview-v7:${supportLibrary}",
-            "suppoutDesign": "com.android.support:design:${supportLibrary}",
-            "appcompat"    : "com.android.support:appcompat-v7:${supportLibrary}",
-            "layout"       : "com.android.support.constraint:constraint-layout:${layout_v}",
-//            "_logger"              : "com.github.orhanobut:logger:${_logger_v}"
+            "multidex"             : "com.android.support:multidex:1.0.2",
+            "cardview"             : "com.android.support:cardview-v7:${supportLibrary}",
+            "recyclerview"         : "com.android.support:recyclerview-v7:${supportLibrary}",
+            "suppoutDesign"        : "com.android.support:design:${supportLibrary}",
+            "appcompat"            : "com.android.support:appcompat-v7:${supportLibrary}",
+            "layout"               : "com.android.support.constraint:constraint-layout:${layout_v}",
             "support"              : "com.android.support:support-v4:${supportLibrary}",
 
-//            "butterknife"          : "com.jakewharton:butterknife:${butterknife_v}",
+
             "okhttp_urlconnection" : "com.squareup.okhttp3:okhttp-urlconnection:${okhttp_urlconnection_v}",
             "okhttp3_integration"  : "com.github.bumptech.glide:okhttp3-integration:${okhttp3_integration_v}",
             "rxjava"               : "io.reactivex:rxjava:${rxjava_v}",
@@ -89,17 +88,23 @@ ext{
             "converter_scalars"    : "com.squareup.retrofit2:converter-scalars:${converter_scalars_v}",
             "adapter_rxjava"       : "com.squareup.retrofit2:adapter-rxjava:${retrofit_v}",
             "logging_interceptor"  : "com.squareup.okhttp3:logging-interceptor:${logging_interceptor_v}",
+            "glide-transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}",
+            "_logger"              : "com.github.orhanobut:logger:${_logger_v}",
+            "glide"                : "com.github.bumptech.glide:glide:${glide_v}",
+            "glide_transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}"
+
+            //            "butterknife"          : "com.jakewharton:butterknife:${butterknife_v}",
 //            "xbanner"              : "com.xhb:xbanner:${xbanner_v}",
 //            "nineoldandroids"      : "com.nineoldandroids:library:${nineoldandroids_v}",
 //            "fresco"               : "com.facebook.fresco:fresco:${fresco_v}",
-            "glide-transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}",
+
 //            "eventbus"             : "org.greenrobot:eventbus:${eventbus_v}",
 //            "jpush"                : "cn.jiguang.sdk:jpush:${jpush_v}",
 //            "jcore"                : "cn.jiguang.sdk:jcore:${jcore_v}",
 //            "FlycoTabLayout_Lib"   : "com.flyco.tablayout:FlycoTabLayout_Lib:${FlycoTabLayout_Lib_v}",
 //            "DanmakuFlameMaster"   : "com.github.ctiao:DanmakuFlameMaster:${DanmakuFlameMaster_v}",
 //            "commons_codec"        : "commons-codec:commons-codec:${commons_codec_v}",
-            "_logger"              : "com.github.orhanobut:logger:${_logger_v}",
+
 //            "greendao"             : "org.greenrobot:greendao:${green_dao_v}",
 //            "greendao_generator"   : "org.greenrobot:greendao-generator:${greendao_generator_v}",
 //            "PickerView"           : "com.contrarywind:Android-PickerView:${PickerView_v}",
@@ -114,8 +119,7 @@ ext{
 //            "NumberPickerView"     : "cn.carbswang.android:NumberPickerView:${NumberPickerView_v}",
 //            "subsampling"          : "com.davemorrissey.labs:subsampling-scale-image-view:${subsampling_v}",
 //            "filedownloader"       : "com.liulishuo.filedownloader:library:${filedownloader_v}",
-            "glide"                : "com.github.bumptech.glide:glide:${glide_v}",
-            "glide_transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}"
+
 
     ]
 
