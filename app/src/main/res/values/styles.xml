@@ -8,4 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NoTitleDialog" parent="@android:style/Theme.Dialog">
+
+        <!--背景透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--是否有覆盖-->
+        <item name="android:windowContentOverlay">@null</item>
+        <!--是否浮动-->
+        <item name="android:windowIsFloating"> true </item>
+        <!--边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--背景：透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--dialog的整个屏幕的背景是否有遮障层-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--动画-->
+        <item name="android:windowAnimationStyle"> @style/AnimSlideBottom</item>
+        <!--没有标题-->
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="AnimSlideBottom" >
+        <item name="android:windowEnterAnimation">@anim/basemodule_ppw_menu_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/basenodule_ppw_menu_fade_out</item>
+    </style>
 </resources>
