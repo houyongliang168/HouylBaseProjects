@@ -6,11 +6,16 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 
 import com.base.hyl.houylbaseprojects.fgDialog.base.BaseDialogFragment;
+import com.base.hyl.houylbaseprojects.fgDialog.base.BindViewHolder;
 import com.base.hyl.houylbaseprojects.fgDialog.base.TController;
+import com.base.hyl.houylbaseprojects.fgDialog.listener.OnBindViewListener;
+import com.base.hyl.houylbaseprojects.fgDialog.listener.OnViewClickListener;
 
 
 /**
@@ -143,7 +148,7 @@ public class TDialog extends BaseDialogFragment {
     public TDialog show() {
         Log.d(TAG, "show");
         FragmentTransaction ft = tController.getFragmentManager().beginTransaction();
-        ft.add(this, tController.getTag());
+        ft.add(this,tController.getTag());
         ft.commitAllowingStateLoss();
         return this;
     }

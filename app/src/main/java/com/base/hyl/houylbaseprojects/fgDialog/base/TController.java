@@ -8,7 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
 import android.view.View;
 
-
+import com.base.hyl.houylbaseprojects.R;
+import com.base.hyl.houylbaseprojects.fgDialog.listener.OnBindViewListener;
+import com.base.hyl.houylbaseprojects.fgDialog.listener.OnViewClickListener;
 
 import java.io.Serializable;
 

@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.timmy.tdialog.R;
+import com.base.hyl.houylbaseprojects.R;
 import com.timmy.tdialog.TDialog;
 import com.timmy.tdialog.base.TBaseAdapter;
 import com.timmy.tdialog.base.TController;
@@ -30,7 +30,7 @@ public class TListDialog extends TDialog {
         super.bindView(view);
         if (tController.getAdapter() != null) {//有设置列表
             //列表
-            RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
             if (recyclerView == null) {
                 throw new IllegalArgumentException("自定义列表xml布局,请设置RecyclerView的控件id为recycler_view");
             }
