@@ -25,8 +25,9 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':houbasemodule')
     compile project(':baserecyclerview')
+    compile 'com.timmy.tdialog:tdialog:2.0.0'
 }

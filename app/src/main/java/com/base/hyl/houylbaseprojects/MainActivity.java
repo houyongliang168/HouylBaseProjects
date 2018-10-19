@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.timmy.tdialog.TDialog;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -20,5 +22,6 @@ public class MainActivity extends Activity {
             startActivity(new Intent(MainActivity.this,Main2Activity.class));
             }
         });
+        TDialog.
     }
 }
