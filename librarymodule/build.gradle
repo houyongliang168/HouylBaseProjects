@@ -16,6 +16,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    librarys.each { k, v -> compile v }
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    librarys.each { k, v -> api v }
 }

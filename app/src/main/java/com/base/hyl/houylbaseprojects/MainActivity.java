@@ -1,12 +1,7 @@
 package com.base.hyl.houylbaseprojects;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
-import com.timmy.tdialog.TDialog;
 
 public class MainActivity extends Activity {
 
@@ -15,13 +10,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView title= (TextView) findViewById(R.id.title);
-        title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            startActivity(new Intent(MainActivity.this,Main2Activity.class));
-            }
-        });
-        TDialog.
+//        TextView title= (TextView) findViewById(R.id.title);
+//        title.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            startActivity(new Intent(MainActivity.this,Main2Activity.class));
+//            }
+//        });
+
     }
 }

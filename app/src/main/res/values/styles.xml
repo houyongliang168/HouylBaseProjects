@@ -32,4 +32,6 @@
         <item name="android:windowEnterAnimation">@anim/basemodule_ppw_menu_fade_in</item>
         <item name="android:windowExitAnimation">@anim/basenodule_ppw_menu_fade_out</item>
     </style>
+
+
 </resources>
