@@ -10,11 +10,12 @@ import android.util.Log;
 import android.view.View;
 
 import com.base.hyl.houylbaseprojects.R;
-import com.timmy.tdialog.TDialog;
-import com.timmy.tdialog.base.TBaseAdapter;
-import com.timmy.tdialog.base.TController;
-import com.timmy.tdialog.listener.OnBindViewListener;
-import com.timmy.tdialog.listener.OnViewClickListener;
+import com.base.hyl.houylbaseprojects.fgDialog.TDialog;
+import com.base.hyl.houylbaseprojects.fgDialog.base.TBaseAdapter;
+import com.base.hyl.houylbaseprojects.fgDialog.base.TController;
+import com.base.hyl.houylbaseprojects.fgDialog.listener.OnBindViewListener;
+import com.base.hyl.houylbaseprojects.fgDialog.listener.OnViewClickListener;
+
 
 /**
  * 列表弹窗  与TDialog实现分开处理
