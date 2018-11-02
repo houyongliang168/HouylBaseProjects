@@ -26,8 +26,8 @@ android {
 
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    api fileTree(include: ['*.jar'], dir: 'libs')
-    api project(':houbasemodule')
-    api project(':baserecyclerview')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':houbasemodule')
+    implementation project(':baserecyclerview')
 
 }

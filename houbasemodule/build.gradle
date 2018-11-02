@@ -30,9 +30,9 @@ android {
 }
 /*依赖库*/
 dependencies {
-    api fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
 //    librarys.each { k, v -> compile v }
-    api project(':librarymodule')
+    implementation project(':librarymodule')
 
 }
