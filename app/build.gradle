@@ -13,8 +13,9 @@ android {
         versionCode cfg.versionCode//更新次数
         versionName cfg.versionName//版本号
 
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        //添加如下配置就OK了
+//        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -27,6 +28,6 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':houbasemodule')
-    implementation project(':baserecyclerview')
-
+    //    implementation project(':librarymodule')
+    //    implementation project(':baserecyclerview')
 }

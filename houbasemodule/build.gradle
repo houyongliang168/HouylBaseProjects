@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 def cfg = rootProject.ext.android
 def librarys = rootProject.ext.dependencies
 android {
-    compileSdkVersion cfg.compileSdkVersion //SDK的版本号，也就是API Level，例如API-19、API-20、API-21等等
+   // compileSdkVersion cfg.compileSdkVersion //SDK的版本号，也就是API Level，例如API-19、API-20、API-21等等
     //构建工具的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于..your_sdk_path/build-tools/XX.XX.XX
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion cfg.buildToolsVersion
@@ -33,6 +33,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
 //    librarys.each { k, v -> compile v }
-    implementation project(':librarymodule')
 
+    compile project(':librarymodule')
 }

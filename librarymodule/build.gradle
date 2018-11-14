@@ -6,16 +6,15 @@ android {
     buildToolsVersion cfg.buildToolsVersion //编译工具的版本
 
     defaultConfig {
-        minSdkVersion cfg.minSdkVersion
-        targetSdkVersion cfg.targetSdkVersion
-        multiDexEnabled true  //处理方法数超65535
+        minSdkVersion cfg.minSdkVersion  //最低SDK 兼容
+        targetSdkVersion cfg.targetSdkVersion //目标版本
         versionCode cfg.versionCode//更新次数
         versionName cfg.versionName//版本号
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 }
-
 dependencies {
-    implementation  fileTree(include: ['*.jar'], dir: 'libs')
-    librarys.each { k, v -> implementation v }
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    librarys.each { k, v -> implementation v } implementation 依赖找不到该依赖
+        librarys.each { k, v -> compile v }
 }
+
