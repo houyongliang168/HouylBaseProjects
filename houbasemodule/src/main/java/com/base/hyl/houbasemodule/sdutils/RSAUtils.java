@@ -1,9 +1,11 @@
-package com.base.hyl.houbasemodule.utils;
+package com.base.hyl.houbasemodule.sdutils;
 
 
-import android.text.TextUtils;
 
-import com.base.hyl.houbasemodule.util.Base64;
+import com.base.hyl.houbasemodule.encryption.Base64;
+import com.base.hyl.houbasemodule.encryption.Base64Utils;
+import com.orhanobut.logger.Logger;
+
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -150,18 +152,18 @@ public class RSAUtils {
      * @return
      * @throws Exception
      */
-    public static byte[] encryptByPublicKeyType2(byte[] data, String publicKey)
-            throws Exception {
-        byte[] keyBytes = Base64Utils.decode(publicKey);
-        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(keyBytes);
-        KeyFactory keyFactory = KeyFactory.getInstance(RSA);
-        Key publicK = keyFactory.generatePublic(x509KeySpec);
-        // 对数据加密
-        Cipher cipher = Cipher.getInstance(RSA);
-        cipher.init(Cipher.ENCRYPT_MODE, publicK);
-        byte[] encryptedData =  cipher.doFinal(data);
-        return encryptedData;
-    }
+//    public static byte[] encryptByPublicKeyType2(byte[] data, String publicKey)
+//            throws Exception {
+//        byte[] keyBytes = Base64Utils.decode(publicKey);
+//        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(keyBytes);
+//        KeyFactory keyFactory = KeyFactory.getInstance(RSA);
+//        Key publicK = keyFactory.generatePublic(x509KeySpec);
+//        // 对数据加密
+//        Cipher cipher = Cipher.getInstance(RSA);
+//        cipher.init(Cipher.ENCRYPT_MODE, publicK);
+//        byte[] encryptedData =  cipher.doFinal(data);
+//        return encryptedData;
+//    }
 
 
 
@@ -170,24 +172,25 @@ public class RSAUtils {
 
 
 
-    public static String encryptData2String(String data, String publicKey)
-    { String cipherTextBase64 = "";
-        byte[] bytes = data.getBytes();
-        if(bytes.length>0&& !TextUtils.isEmpty(publicKey)){
-            try {
-                byte[] key = encryptByPublicKeyType2(bytes, publicKey);
-                if(key!=null){
-                    cipherTextBase64= Base64.encode(key);
+//    public static String encryptData2String(String data, String publicKey)
+//    { String cipherTextBase64 = "";
+//        byte[] bytes = data.getBytes();
+//        if(bytes.length>0&& !TextUtils.isEmpty(publicKey)){
+//            try {
+//                byte[] key = encryptByPublicKeyType2(bytes, publicKey);
+//                if(key!=null){
+//                    cipherTextBase64= Base64.encode(key);
 //                    Logger.e("cipherTextBase64 Base64Utils : "+ cipherTextBase64);
-//                    Logger.e("cipherTextBase64 Base64Utils URLEncoder.encode utf-8 : "+ cipherTextBase64);
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return cipherTextBase64;
-    }
+////                    cipherTextBase64=URLEncoder.encode(cipherTextBase64,"utf-8");
+////                    Logger.e("cipherTextBase64 Base64Utils URLEncoder.encode utf-8 : "+ cipherTextBase64);
+//                }
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return cipherTextBase64;
+//    }
 
 
 
@@ -445,6 +448,48 @@ public class RSAUtils {
         System.out.println("PrivatecExponent=" + rsaPrivateKey.getPrivateExponent().toString());
 
     }
+
+    public static byte[] encryptByPublicKeyType2(byte[] data, String publicKey)
+            throws Exception {
+        byte[] keyBytes = Base64Utils.decode(publicKey);
+        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(keyBytes);
+        KeyFactory keyFactory = KeyFactory.getInstance(RSA);
+        Key publicK = keyFactory.generatePublic(x509KeySpec);
+        // 对数据加密
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, publicK);
+        byte[] encryptedData =  cipher.doFinal(data);
+        return encryptedData;
+    }
+
+
+
+
+
+
+
+
+    public static String encryptData2String(String data, String publicKey)
+    { String cipherTextBase64 = "";
+        byte[] bytes = data.getBytes();
+
+        try {
+            byte[] key = encryptByPublicKeyType2(bytes, publicKey);
+            if(key!=null){
+                cipherTextBase64= Base64.encode(key);
+                Logger.e("cipherTextBase64 :"+cipherTextBase64);
+//                System.out.println("cipherTextBase64 Base64Utils : "+ cipherTextBase64);
+//                cipherTextBase64= URLEncoder.encode(cipherTextBase64,"utf-8");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return cipherTextBase64;
+    }
+
 
 
 }

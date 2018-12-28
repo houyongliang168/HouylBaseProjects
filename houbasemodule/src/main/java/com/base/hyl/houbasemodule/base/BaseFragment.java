@@ -16,7 +16,7 @@ import com.base.hyl.houbasemodule.R;
  * Created by zcc on 2017/5/3.
  */
 
-public class BBaseFragment extends Fragment {
+public class BaseFragment extends Fragment {
     private Dialog dialog;
     public Activity activity;
 

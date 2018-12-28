@@ -10,7 +10,7 @@ import android.os.Bundle;
  * 基类
  */
 
-public abstract class CoreBaseActivity<P extends CoreBasePresenter> extends BBaseActivity implements ICoreBaseControl.ICoreBaseView {
+public abstract class CoreBaseActivity<P extends CoreBasePresenter> extends BaseActivity implements ICoreBaseControl.ICoreBaseView {
 
     protected String TAG;
     public P mPresenter;

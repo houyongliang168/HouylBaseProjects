@@ -16,7 +16,7 @@ import com.base.hyl.houbasemodule.app.widget.dialog.MyDialog;
 /**
  * Created by zcc on 2017/4/28.
  */
-public class BBaseActivity extends FragmentActivity {
+public class BaseActivity extends FragmentActivity {
     private Dialog dialog;
     private MyDialog myDialog;
 

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 
+import com.base.hyl.houbasemodule.util.Base64;
 import com.google.gson.Gson;
 
 import java.lang.reflect.InvocationTargetException;

@@ -1,4 +1,4 @@
-package com.base.hyl.houbasemodule.utils;
+package com.base.hyl.houbasemodule.util;
 
 public final class Base64 {
 

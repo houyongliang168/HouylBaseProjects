@@ -12,14 +12,12 @@ import android.view.ViewGroup;
 
 import com.base.hyl.houbasemodule.MyLog;
 
-import java.util.logging.Logger;
-
 
 /**
  * 基类 -- 懒加载
  */
 
-public abstract class CoreBaseFragment<P extends CoreBasePresenter> extends BBaseFragment implements ICoreBaseControl.ICoreBaseView {
+public abstract class CoreBaseFragment<P extends CoreBasePresenter> extends BaseFragment implements ICoreBaseControl.ICoreBaseView {
 
     protected String TAG;
     public P mPresenter;
