@@ -1,6 +1,6 @@
 package com.base.hyl.houbasemodule.tools;
 
-import org.apache.commons.codec.binary.Base64;
+
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

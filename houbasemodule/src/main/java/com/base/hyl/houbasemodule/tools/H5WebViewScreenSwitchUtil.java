@@ -13,7 +13,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.taikanglife.isalessystem.interacth5.H5CommonWebActivity;
+
 
 /**
  * Created by REN SHI QIAN on 2018/2/28.

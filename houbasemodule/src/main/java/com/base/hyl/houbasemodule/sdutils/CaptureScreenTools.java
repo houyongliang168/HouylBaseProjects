@@ -13,7 +13,9 @@ import android.os.Environment;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ScrollView;
-import com.taikanglife.isalessystem.common.utils.FileUtil;
+
+import com.base.hyl.houbasemodule.tools.FileUtil;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
