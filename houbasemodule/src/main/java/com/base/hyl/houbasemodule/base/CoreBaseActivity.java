@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 
 /**
@@ -47,5 +48,8 @@ public abstract class CoreBaseActivity<P extends CoreBasePresenter> extends Base
         startActivity(intent);
     }
 
+    protected <T extends View>T generateFindViewById(int id){
+        return (T)findViewById(id);
+    }
 
 }
