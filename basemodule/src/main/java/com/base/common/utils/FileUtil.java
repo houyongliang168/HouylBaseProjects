@@ -1,172 +1,194 @@
+/*
+ * Copyright (C) 2017 Baidu, Inc. All Rights Reserved.
+ */
 package com.base.common.utils;
 
-
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.MediaStore;
-import android.text.TextUtils;
-
-
-import com.base.common.constant.Constant;
-
+import android.os.Environment;
 
 import java.io.File;
-import java.net.URISyntaxException;
-
-/**
- * Created by HOUYL on 2018/6/20.
- */
 
 public class FileUtil {
-    public static boolean isFileExists(String path) {
-        try {
-            if (!TextUtils.isEmpty(Constant.PATH_SD_CARD)) {
-                File file = new File(path);
-                if (file.exists()) {
-                    return true;
-                }
-            }
-            return false;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public static File getSaveFile(Context contex) {
+        File file = new File(Environment.getExternalStorageDirectory(), "pic.jpg");
+        return file;
     }
+
+    public static File getSaveFile(Context contex, String name) {
+        File file = new File(Environment.getExternalStorageDirectory(), name + ".jpg");
+        return file;
+    }
+
+
+    public static File getSaveOtherFile(Context contex, String name) {
+        String mFilePath = "/storage/emulated/0/com.taikanglife.isalessystem/" ;
+
+        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            if (Environment.getExternalStorageDirectory().getPath() != "") {
+                mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar + "com.taikanglife.isalessystem"+ File.separatorChar  ;
+            }
+        } else {
+            mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() +File.separatorChar+"com.taikanglife.isalessystem"+File.separatorChar ;
+        }
+
+//        File folder = Environment.getExternalStoragePublicDirectory(mFilePath);
+//        if (!folder.exists()) {
+//            folder.mkdirs();
+//        }
+//        File file = new File(mFilePath, name + ".loan");//每次写入会覆盖旧数据
+        File file = getFilePath(mFilePath, name + ".loan");//每次写入会覆盖旧数据
+
+        return file;
+    }
+
 
     /**
-     * Gets the content:// URI from the given corresponding path to a file
+     * //TODO:上传成功后，删除文件夹
      *
-     * @param context
-     * @param imageFile
-     * @return content Uri
+     * @param file
      */
-    public static Uri getImageContentUri(Context context, File imageFile) {
-        String filePath = imageFile.getAbsolutePath();
-        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                new String[]{MediaStore.Images.Media._ID}, MediaStore.Images.Media.DATA + "=? ",
-                new String[]{filePath}, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            int id = cursor.getInt(cursor.getColumnIndex(MediaStore.MediaColumns._ID));
-            Uri baseUri = Uri.parse("content://media/external/images/media");
-            return Uri.withAppendedPath(baseUri, "" + id);
-        } else {
-            if (imageFile.exists()) {
-                ContentValues values = new ContentValues();
-                values.put(MediaStore.Images.Media.DATA, filePath);
-                return context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-            } else {
-                return null;
-            }
-        }
-    }
-
-    //删除文件/文件夹及子文件
     public static void deleteFile(File file) {
-        if (file.exists()) { // 判断文件是否存在
-            if (file.isFile()) { // 判断是否是文件
-                file.delete(); // delete()方法 你应该知道 是删除的意思;
-            } else if (file.isDirectory()) { // 否则如果它是一个目录
-                File files[] = file.listFiles(); // 声明目录下所有的文件 files[];
-                for (int i = 0; i < files.length; i++) { // 遍历目录下所有的文件
-                    deleteFile(files[i]); // 把每个文件 用这个方法进行迭代
+        if (file.exists()) {
+            if (file.isFile()) {
+                file.delete();
+            } else if (file.isDirectory()) {
+                File files[] = file.listFiles();
+                for (int i = 0; i < files.length; i++) {
+                    deleteFile(files[i]);
                 }
             }
             file.delete();
         }
     }
 
-    // 获取文件、文件夹大小
-    public static long getFileSize(File file) {
-        //判断文件是否存在
-        if (file.exists()) {
-            //如果是目录则递归计算其内容的总大小
-            if (file.isDirectory()) {
-                File[] children = file.listFiles();
-                long size = 0;
-                for (File f : children)
-                    size += getFileSize(f);
-                return size;
-            } else {//如果是文件则直接返回其大小
-                return file.length();
+    /**
+     * //TODO:上传成功后，删除文件及文件夹
+     *
+     * @param pPath 文件目录
+     */
+    public static void deleteDir(final String pPath) {
+        File dir = new File(pPath);
+        deleteFile(dir);
+    }
+
+/*删除文件的 其他方法*/
+
+    /**
+     * 删除单个文件
+     *
+     * @param filePath 被删除文件的文件名
+     * @return 文件删除成功返回true，否则返回false
+     */
+    public static boolean deleteFile(String filePath) {
+        File file = new File(filePath);
+        if (file.isFile() && file.exists()) {
+            return file.delete();
+        }
+        return false;
+    }
+
+    /**
+     * 删除文件夹以及目录下的文件
+     *
+     * @param filePath 被删除目录的文件路径
+     * @return 目录删除成功返回true，否则返回false
+     */
+    public static boolean deleteDirectory(String filePath) {
+        boolean flag = false;
+        //如果filePath不以文件分隔符结尾，自动添加文件分隔符
+        if (!filePath.endsWith(File.separator)) {
+            filePath = filePath + File.separator;
+        }
+        File dirFile = new File(filePath);
+        if (!dirFile.exists() || !dirFile.isDirectory()) {
+            return false;
+        }
+        flag = true;
+        File[] files = dirFile.listFiles();
+        //遍历删除文件夹下的所有文件(包括子目录)
+        for (int i = 0; i < files.length; i++) {
+            if (files[i].isFile()) {
+                //删除子文件
+                flag = deleteFile(files[i].getAbsolutePath());
+                if (!flag) break;
+            } else {
+                //删除子目录
+                flag = deleteDirectory(files[i].getAbsolutePath());
+                if (!flag) break;
             }
+        }
+        if (!flag) return false;
+        //删除当前空目录
+        return dirFile.delete();
+    }
+
+    /**
+     * 根据路径删除指定的目录或文件，无论存在与否
+     *
+     * @param filePath 要删除的目录或文件
+     * @return 删除成功返回 true，否则返回 false。
+     */
+    public static boolean deleteFolder(String filePath) {
+        File file = new File(filePath);
+        if (!file.exists()) {
+            return false;
         } else {
-            return 0;
+            if (file.isFile()) {
+                // 为文件时调用删除文件方法
+                return deleteFile(filePath);
+            } else {
+                // 为目录时调用删除目录方法
+                return deleteDirectory(filePath);
+            }
         }
     }
 
-    public static String getFilePath(Context context, Uri uri) throws URISyntaxException {
-        if ("content".equalsIgnoreCase(uri.getScheme())) {
-            String[] projection = {MediaStore.MediaColumns.DATA};
-            Cursor cursor;
+
+
+
+    /**
+     * 创建文件
+     *
+     * @param filePath 文件路径
+     * @param fileName 文件名称
+     * @return
+     */
+    public static File getFilePath(String filePath,
+                                   String fileName) {
+        File file = new File(filePath, fileName);
+        if (file.exists()) {
+            return file;
+        } else {
+            file = null;
+            makeRootDirectory(filePath);
             try {
-                cursor = context.getContentResolver().query(uri, projection, null, null, null);
-                int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
-                if (cursor.moveToFirst()) {
-                    return cursor.getString(column_index);
-                }
+                file = new File(filePath + File.separator + fileName);
             } catch (Exception e) {
-                // Eat it  Or Log it.
+                //  Auto-generated catch block
                 e.printStackTrace();
             }
-        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
-            return uri.getPath();
+            return file;
         }
-        return null;
     }
 
-//    /**
-//     * 将视频插入图库
-//     *
-//     * @param url 视频路径地址
-//     */
-//    public static void updateVideoToSystem(Context context, String url) {
-//        try {
-//            File file = new File(url);
-//            //获取ContentResolve对象，来操作插入视频
-//            ContentResolver localContentResolver = context.getContentResolver();
-//            if (file.exists()) {
-//                //如果是目录则递归计算其内容的总大小
-//                if (file.isDirectory()) {
-//                    File[] children = file.listFiles();
-//                    for (File f : children) {
-//                        String[] suffixs = f.getPath().split("\\.");
-//                        String suffix = suffixs[suffixs.length - 1];
-//                        for (int i = 0; i < Constant.videos.length; i++) {
-//                            if (Constant.videos[i].equals(suffix)) {
-//                                //ContentValues：用于储存一些基本类型的键值对
-//                                ContentValues localContentValues = getVideoContentValues(context, f, System.currentTimeMillis());
-//                                //insert语句负责插入一条新的纪录，如果插入成功则会返回这条记录的id，如果插入失败会返回-1。
-//                                Uri localUri = localContentResolver.insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, localContentValues);
-//                            }
-//                        }
-//
-//                    }
-//                } else {//如果是文件则直接返回其大小
-//                    //ContentValues：用于储存一些基本类型的键值对
-//                    ContentValues localContentValues = getVideoContentValues(context, file, System.currentTimeMillis());
-//                    //insert语句负责插入一条新的纪录，如果插入成功则会返回这条记录的id，如果插入失败会返回-1。
-//                    Uri localUri = localContentResolver.insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, localContentValues);
-//                }
-//            }
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
+    /**
+     * 创建根目录
+     *
+     * @param filePath
+     */
+    public static void makeRootDirectory(String filePath) {
+        File file = null;
+        try {
+            file = new File(filePath);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+        } catch (Exception e) {
 
-    //再往数据库中插入数据的时候将，将要插入的值都放到一个ContentValues的实例当中
-    public static ContentValues getVideoContentValues(Context paramContext, File paramFile, long paramLong) {
-        ContentValues localContentValues = new ContentValues();
-        localContentValues.put("title", paramFile.getName());
-        localContentValues.put("_display_name", paramFile.getName());
-        localContentValues.put("mime_type", "video/3gp");
-        localContentValues.put("datetaken", Long.valueOf(paramLong));
-        localContentValues.put("date_modified", Long.valueOf(paramLong));
-        localContentValues.put("date_added", Long.valueOf(paramLong));
-        localContentValues.put("_data", paramFile.getAbsolutePath());
-        localContentValues.put("_size", Long.valueOf(paramFile.length()));
-        return localContentValues;
+        }
     }
+
+
+
 
 }

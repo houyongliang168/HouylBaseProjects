@@ -1,4 +1,4 @@
-package com.base.common.utils;
+package com.base.common.store;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,6 +6,7 @@ import android.text.TextUtils;
 
 
 import com.base.common.encryption.Base64;
+
 import com.base.common.log.MyLog;
 import com.google.gson.Gson;
 

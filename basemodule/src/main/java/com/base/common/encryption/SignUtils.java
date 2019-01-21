@@ -2,10 +2,8 @@ package com.base.common.encryption;
 
 import android.text.TextUtils;
 
-import com.base.common.Bean.CompareUtils;
-import com.base.common.Bean.Paramaters;
-import com.base.hyl.houbasemodule.Bean.CompareUtils;
-import com.base.hyl.houbasemodule.Bean.Paramaters;
+import com.base.Bean.CompareUtils;
+import com.base.Bean.Paramaters;
 import com.orhanobut.logger.Logger;
 
 import java.security.MessageDigest;

@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
+import com.base.common.activitystack.ActivityStack;
+import com.base.widget.dialog.MyDialog;
 import com.base.hyl.houbasemodule.R;
-import com.base.hyl.houbasemodule.activitystack.ActivityStack;
-import com.base.hyl.houbasemodule.app.widget.dialog.MyDialog;
 
 
 /**

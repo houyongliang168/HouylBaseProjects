@@ -3,7 +3,8 @@ package com.base.common.utils;
 
 import android.text.TextUtils;
 
-import com.base.hyl.houbasemodule.util.Base64;
+
+import com.base.common.encryption.Base64Utils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -24,7 +25,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-
+import com.base.common.encryption.Base64;
 import javax.crypto.Cipher;
 
 /**
