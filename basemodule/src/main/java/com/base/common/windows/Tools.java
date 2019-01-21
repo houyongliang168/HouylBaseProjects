@@ -1,4 +1,4 @@
-package com.base.common.utils;
+package com.base.common.windows;
 
 import android.graphics.Rect;
 import android.view.View;

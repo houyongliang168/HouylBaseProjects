@@ -1,4 +1,4 @@
-package com.base.common.utils;
+package com.base.common.windows;
 
 import android.content.Context;
 import android.content.res.Configuration;

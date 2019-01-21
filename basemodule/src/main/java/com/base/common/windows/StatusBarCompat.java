@@ -1,4 +1,4 @@
-package com.base.common.utils;
+package com.base.common.windows;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
