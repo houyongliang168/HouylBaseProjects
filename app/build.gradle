@@ -23,6 +23,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //暂时不处理 20190122
+    productFlavors {
+//        cloud {
+//            //云部署版本
+//            resValue "string", "app_name", "MyLuban"
+//            resValue "string", "app_scheme", "bv4phone"
+//            resValue "string", "app_link_scheme", "cloud"
+//            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
+//manifestPlaceholders 可以替换 清单文件中的标签
+        /*例如 设置不同的内容  其源码是map 集合*/
+//            manifestPlaceholders = [
+//                    JPUSH_PKGNAME: applicationId,
+//                    JPUSH_APPKEY : "a6d4d20aa61934aeee", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+//            ]
+    }
+//        entp {
+//            //appid 拼接，实现多个版本
+//            applicationIdSuffix ".entp"
+//            resValue "string", "app_name", "MyLuban企业版"//重新设置 app_name 的值
+//            resValue "string", "app_scheme", "bv4phoneentp"
+//            resValue "string", "app_link_scheme", "entp"
+//            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
+//            manifestPlaceholders = [
+//                    JPUSH_PKGNAME: applicationId,
+//                    JPUSH_APPKEY : "a6d4d20aa61934aettt", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
+//    }
+
 }
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'

@@ -23,6 +23,7 @@ public abstract class CoreBaseFragment<P extends CoreBasePresenter> extends Base
     protected Context mContext;
     private boolean isOpen = false;
     public Activity mActivity;
+    private View mView;
 
 
     //进行fragment 懒加载 优化
@@ -56,6 +57,7 @@ public abstract class CoreBaseFragment<P extends CoreBasePresenter> extends Base
         super.onCreateView(inflater, container, savedInstanceState);
         mIsPrepared = true;
         if (getLayoutView() != null) {
+            mView=getLayoutView();
             return getLayoutView();
         } else {
             if (view == null) {
@@ -66,6 +68,7 @@ public abstract class CoreBaseFragment<P extends CoreBasePresenter> extends Base
                     parent.removeView(view);
                 }
             }
+            mView=view;
             return view;
         }
     }
@@ -151,4 +154,6 @@ public abstract class CoreBaseFragment<P extends CoreBasePresenter> extends Base
      * 初始化控件
      */
     public abstract void initUI(View view, @Nullable Bundle savedInstanceState);
+
+
 }

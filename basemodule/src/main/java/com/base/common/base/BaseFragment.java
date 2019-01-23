@@ -82,4 +82,5 @@ public class BaseFragment extends Fragment {
         super.onAttach(context);
         activity = this.getActivity();
     }
+
 }

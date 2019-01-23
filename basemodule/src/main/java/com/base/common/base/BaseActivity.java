@@ -120,6 +120,8 @@ public class BaseActivity extends FragmentActivity {
         //移除activity
         ActivityStack.getInstance().finishActivity(this);
     }
-
+    protected <T extends View>T generateFindViewById(int id){
+        return (T)findViewById(id);
+    }
 
 }

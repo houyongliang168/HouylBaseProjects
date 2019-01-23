@@ -48,8 +48,6 @@ public abstract class CoreBaseActivity<P extends CoreBasePresenter> extends Base
         startActivity(intent);
     }
 
-    protected <T extends View>T generateFindViewById(int id){
-        return (T)findViewById(id);
-    }
+
 
 }
