@@ -21,14 +21,14 @@ public class FileUtil {
 
 
     public static File getSaveOtherFile(Context contex, String name) {
-        String mFilePath = "/storage/emulated/0/com.taikanglife.isalessystem/" ;
+        String mFilePath = "/storage/emulated/0/com.hyl/" ;
 
         if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             if (Environment.getExternalStorageDirectory().getPath() != "") {
-                mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar + "com.taikanglife.isalessystem"+ File.separatorChar  ;
+                mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar + "hyl"+ File.separatorChar  ;
             }
         } else {
-            mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() +File.separatorChar+"com.taikanglife.isalessystem"+File.separatorChar ;
+            mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() +File.separatorChar+"hyl"+File.separatorChar ;
         }
 
 //        File folder = Environment.getExternalStoragePublicDirectory(mFilePath);
