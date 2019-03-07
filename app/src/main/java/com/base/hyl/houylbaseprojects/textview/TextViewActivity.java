@@ -37,7 +37,8 @@ public class TextViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_view);
         mTextView = generateFindViewById(R.id.tv_simple);
-        initView();
+        mTextView.setText("akdfjkasdjf  \n +adfasdfas");
+//        initView();
     }
 
     private SpannableString dealWithText(String result) {

@@ -31,7 +31,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/tv_ybsq_date"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="测试一下效果式测试一下效果果式果式测试一下效果式测试一下效果式测试一下效 " />
+        tools:text="测试一下式测试一下效 " />
     <!--今日和明日展示按钮-->
     <TextView
         android:id="@+id/tv_ybsq_date"
