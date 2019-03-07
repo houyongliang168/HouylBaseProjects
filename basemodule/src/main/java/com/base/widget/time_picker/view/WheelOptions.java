@@ -3,10 +3,11 @@ package com.base.widget.time_picker.view;
 import android.graphics.Typeface;
 import android.view.View;
 
-import com.base.basemodule.R;
-import com.base.basemodule.app.widget.time_picker.adapter.ArrayWheelAdapter;
-import com.base.basemodule.app.widget.time_picker.lib.WheelView;
-import com.base.basemodule.app.widget.time_picker.listener.OnItemSelectedListener;
+
+import com.base.hyl.houbasemodule.R;
+import com.base.widget.time_picker.adapter.ArrayWheelAdapter;
+import com.base.widget.time_picker.lib.WheelView;
+import com.base.widget.time_picker.listener.OnItemSelectedListener;
 
 import java.util.List;
 
