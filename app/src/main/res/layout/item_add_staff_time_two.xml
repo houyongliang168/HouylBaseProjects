@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:minHeight="46dp">
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_r"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+    <!--中心点位置-->
+    <ImageView
+        android:id="@+id/iv_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/custom_detail_time_cicle_one"
+       android:layout_marginTop="23dp"
+        app:layout_constraintLeft_toLeftOf="@+id/gl_v"
+        app:layout_constraintRight_toRightOf="@+id/gl_r"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/view_below"
+        android:layout_width="@dimen/margin4"
+        android:layout_height="0dp"
+        android:background="@color/coloreeeeee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iv_two"
+        app:layout_constraintStart_toStartOf="@+id/iv_two"
+        app:layout_constraintTop_toBottomOf="@+id/iv_two"></View>
+
+    <View
+        android:id="@+id/view_up"
+        android:layout_width="@dimen/margin4"
+        android:layout_height="0dp"
+        android:background="@color/coloreeeeee"
+        app:layout_constraintBottom_toTopOf="@+id/iv_two"
+        app:layout_constraintEnd_toEndOf="@+id/iv_two"
+        app:layout_constraintStart_toStartOf="@+id/iv_two"
+        app:layout_constraintTop_toTopOf="parent"></View>
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin12"
+        android:textColor="@color/color666666"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_two"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/add_staff_record"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/text12"
+        android:lineSpacingExtra="@dimen/margin6"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/margin40"
+        android:layout_marginTop="@dimen/margin8"
+        android:layout_marginBottom="@dimen/margin8"
+        tools:text="2017年12月22日（星期五）"></TextView>
+
+
+    <TextView
+        android:id="@+id/tv_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin12"
+        android:textColor="@color/color666666"
+        app:layout_constraintRight_toLeftOf="@id/iv_two"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_two"
+        app:layout_constraintTop_toTopOf="@+id/iv_two"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/text10"
+        android:lineSpacingExtra="@dimen/margin6"
+        tools:text="2017年12月22日"></TextView>
+
+
+</android.support.constraint.ConstraintLayout>
+
+
