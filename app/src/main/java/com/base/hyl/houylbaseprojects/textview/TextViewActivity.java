@@ -39,6 +39,13 @@ public class TextViewActivity extends BaseActivity {
         mTextView = generateFindViewById(R.id.tv_simple);
         mTextView.setText("akdfjkasdjf  \n +adfasdfas");
 //        initView();
+        /*设置点击事件*/
+        generateFindViewById(R.id.tv_permission) .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private SpannableString dealWithText(String result) {

@@ -5,18 +5,18 @@ import android.app.Dialog;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.base.common.activitystack.ActivityStack;
-import com.base.widget.dialog.MyDialog;
 import com.base.hyl.houbasemodule.R;
+import com.base.widget.dialog.MyDialog;
 
 
 /**
  * Created by zcc on 2017/4/28.
  */
-public class BaseActivity extends FragmentActivity {
+public class BaseActivity extends AppCompatActivity {
     private Dialog dialog;
     private MyDialog myDialog;
 
