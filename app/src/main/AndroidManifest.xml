@@ -26,6 +26,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--<service-->
+            <!--android:process=":remote"-->
+            <!--android:name="com.base.hyl.houylbaseprojects.server.MyService"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="co.example.leo.myService"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
     </application>
 
 </manifest>
