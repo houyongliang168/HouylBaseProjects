@@ -20,7 +20,7 @@ android {
         } else {
             //release模式
             buildConfigField "String", "AlphaUrl", "\"${url["release"]}\""
-            buildConfigField 'boolean','IS_DEBUG','false'
+            buildConfigField 'boolean','IS_DEBUG','true'
             buildConfigField("int", "INTERNET_REQUEST_TIME", "30000")//网络请求时间      30s
         }
 
