@@ -9,5 +9,5 @@ interface IBookManager {
      * and return values in AIDL.
      */
     List<Book> getBookList();
-    void addBook(inout Book book);
+    void addBook(in Book book);
 }

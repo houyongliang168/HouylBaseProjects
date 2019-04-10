@@ -11,6 +11,9 @@ public class Book implements Parcelable {
 
     public Book() {
     }
+  public Book(String name) {
+      this.name = name;
+    }
 
     public Book(String name, int bookId) {
         this.name = name;
@@ -53,7 +56,7 @@ public class Book implements Parcelable {
 
     @Override
     public String toString() {
-        return "book name：" + name;
+        return "book name：" + name+"_id:"+bookId;
     }
 
 

@@ -4,18 +4,17 @@
 
     <!-- android:icon="${app_icon}" -->
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:name=".App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity
             android:name=".Main2Activity"
-            android:theme="@style/NoTitleDialog">
-        </activity>
-        <activity android:name=".textview.TextViewActivity"></activity>
+            android:theme="@style/NoTitleDialog" />
+        <activity android:name=".textview.TextViewActivity" />
         <activity android:name=".web.WebActivity" />
         <activity
             android:name=".Main3Activity"
@@ -23,18 +22,29 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<service-->
-            <!--android:process=":remote"-->
-            <!--android:name="com.base.hyl.houylbaseprojects.server.MyService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="true">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="co.example.leo.myService"/>-->
-            <!--</intent-filter>-->
-        <!--</service>-->
+        <!-- <service -->
+        <!-- android:process=":remote" -->
+        <!-- android:name="com.base.hyl.houylbaseprojects.server.MyService" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="co.example.leo.myService"/> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <service
+            android:name=".aidl.LibraryService"
+            android:enabled="true"
+            android:exported="true" 
+            android:process=":romote"
+            />
+        <service
+            android:name=".aidl.BookManagerService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
