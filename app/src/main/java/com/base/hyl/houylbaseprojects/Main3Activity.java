@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.base.common.log.MyToast;
+import com.base.hyl.houylbaseprojects.messenger.MessengerActivity;
 import com.orhanobut.logger.Logger;
 
 
@@ -39,6 +40,9 @@ public class Main3Activity extends AppCompatActivity implements Test1Fragment.On
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                Intent intent=new Intent(Main3Activity.this,MessengerActivity.class);
+                startActivity(intent);
             }
         });
     }

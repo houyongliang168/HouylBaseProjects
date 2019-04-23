@@ -17,4 +17,5 @@ public class Constant {
     public static final String APP_ID = "";//微信APP_ID
     public static final String WEB_URL = "WEB_URL";//webview 跳转处理
     /*测试一下  */
+    public static final int MSG_FROM_CLIENT=1;
 }

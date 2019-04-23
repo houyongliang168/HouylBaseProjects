@@ -38,13 +38,20 @@
         <service
             android:name=".aidl.LibraryService"
             android:enabled="true"
-            android:exported="true" 
-            android:process=":romote"
-            />
+            android:exported="true"
+            android:process=":romote" />
         <service
             android:name=".aidl.BookManagerService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+        <!-- 开一个 进程 -->
+        <service
+            android:name=".messenger.MessengerService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote" />
+
+        <activity android:name=".messenger.MessengerActivity"></activity>
     </application>
 
 </manifest>
