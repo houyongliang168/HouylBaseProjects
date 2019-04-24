@@ -9,5 +9,5 @@ interface IBookManager {
      * and return values in AIDL.
      */
     List<Book> getBookList();
-    void addBook(in Book book);
+    void addBook(in Book book);// in 输入型参数 out 输出型参数  inout 输入输出型参数  底层的开销不同
 }

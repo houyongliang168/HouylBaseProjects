@@ -20,11 +20,7 @@
             android:name=".Main3Activity"
             android:label="@string/title_activity_main3"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+         
         </activity>
         <!-- <service -->
         <!-- android:process=":remote" -->
@@ -40,18 +36,33 @@
             android:enabled="true"
             android:exported="true"
             android:process=":romote" />
+        <!-- aidl 测试 -->
         <service
             android:name=".aidl.BookManagerService"
             android:enabled="true"
-            android:exported="true" />
-        <!-- 开一个 进程 -->
+            android:exported="true"
+            android:process=":remote" />
+        <!-- messenger 开一个 进程 -->
         <service
             android:name=".messenger.MessengerService"
             android:enabled="true"
             android:exported="true"
             android:process=":remote" />
 
-        <activity android:name=".messenger.MessengerActivity"></activity>
+        <activity android:name=".messenger.MessengerActivity" />
+        <activity
+            android:name=".aidl.BookManagerActivity"
+            android:label="@string/title_activity_book_manager"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".入口.MainEntranceActivity"
+            android:label="@string/title_activity_main_entrance"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

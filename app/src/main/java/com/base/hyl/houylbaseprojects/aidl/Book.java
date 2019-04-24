@@ -15,7 +15,7 @@ public class Book implements Parcelable {
       this.name = name;
     }
 
-    public Book(String name, int bookId) {
+    public Book( int bookId,String name) {
         this.name = name;
         this.bookId = bookId;
     }
