@@ -1,7 +1,7 @@
-package com.base.hyl.houylbaseprojects.入口.model;
+package com.base.hyl.houylbaseprojects.rukou.model;
 
 
-import com.base.hyl.houylbaseprojects.入口.contract.IAgentContract;
+import com.base.hyl.houylbaseprojects.rukou.contract.IAgentContract;
 
 /**
  * Created by houyongliang on 2018/3/7 15:46.

@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.base.hyl.houylbaseprojects">
 
-    <!-- android:icon="${app_icon}" -->
+    <!-- aidl 权限声明并使用-->
+    <permission
+        android:name="com.base.hyl.houylbaseprojects.permission"
+        android:protectionLevel="normal"></permission>
+    <uses-permission android:name="com.base.hyl.houylbaseprojects.permission"></uses-permission>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity" />
         <activity
             android:name=".Main2Activity"
@@ -20,7 +25,7 @@
             android:name=".Main3Activity"
             android:label="@string/title_activity_main3"
             android:theme="@style/AppTheme.NoActionBar">
-         
+
         </activity>
         <!-- <service -->
         <!-- android:process=":remote" -->
@@ -55,7 +60,7 @@
             android:label="@string/title_activity_book_manager"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".入口.MainEntranceActivity"
+            android:name=".rukou.MainEntranceActivity"
             android:label="@string/title_activity_main_entrance"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

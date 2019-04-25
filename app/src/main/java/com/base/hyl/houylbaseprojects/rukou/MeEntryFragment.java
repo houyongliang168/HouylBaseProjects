@@ -1,4 +1,4 @@
-package com.base.hyl.houylbaseprojects.入口;
+package com.base.hyl.houylbaseprojects.rukou;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.view.View;
 import com.base.common.base.CoreBaseFragment;
 import com.base.hyl.houylbaseprojects.R;
 import com.base.hyl.houylbaseprojects.aidl.BookManagerActivity;
-import com.base.hyl.houylbaseprojects.入口.bean.AgentBean;
-import com.base.hyl.houylbaseprojects.入口.contract.IAgentContract;
-import com.base.hyl.houylbaseprojects.入口.present.AgentPresenter;
+import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
+import com.base.hyl.houylbaseprojects.rukou.contract.IAgentContract;
+import com.base.hyl.houylbaseprojects.rukou.present.AgentPresenter;
 import com.base.widget.recycler.RecyclerViewClickListener;
 
 import java.util.List;

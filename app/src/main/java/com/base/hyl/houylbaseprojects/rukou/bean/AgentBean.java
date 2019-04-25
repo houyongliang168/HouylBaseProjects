@@ -1,4 +1,4 @@
-package com.base.hyl.houylbaseprojects.入口.bean;
+package com.base.hyl.houylbaseprojects.rukou.bean;
 
 /**
  * Created by houyongliang on 2018/3/7 16:45.

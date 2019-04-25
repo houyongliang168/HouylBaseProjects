@@ -2,11 +2,14 @@ package com.base.hyl.houylbaseprojects.aidl;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.Parcel;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.os.SystemClock;
+import android.text.TextUtils;
 
 import com.base.common.log.MyLog;
 import com.base.common.utils.ProcessUtils;
@@ -40,6 +43,7 @@ public class BookManagerService extends Service {
      * }
      */
     private AtomicBoolean mIsServiceDestoryed = new AtomicBoolean(false);
+    private AtomicBoolean mIsBookAdded = new AtomicBoolean(false);
 
     /**
      * CopyOnWriteArrayList 支持并发的读写
@@ -59,7 +63,7 @@ public class BookManagerService extends Service {
         /* 客户端 可以 进行的操作  获取集合 添加  注册 取消注册*/
         @Override
         public List<Book> getBookList() throws RemoteException {
-            SystemClock.sleep(5000);
+//            SystemClock.sleep(5000);
             return bookList;
         }
 
@@ -97,11 +101,39 @@ public class BookManagerService extends Service {
             MyLog.wtf(TAG,"unregisterListener ，current size :"+mListenerList.size());*/
 
         }
+        /* 可以在里面验证权限  及时阻断binder 传递数据*/
+        @Override
+        public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
+
+            int check=checkCallingOrSelfPermission("com.base.hyl.houylbaseprojects.permission");
+            MyLog.wtf(TAG,"check :"+check);
+            MyLog.wtf(TAG,"PackageManager.PERMISSION_DENIED :"+PackageManager.PERMISSION_DENIED);
+//            if(check==PackageManager.PERMISSION_DENIED){/*如果权限未通过 则不处理*/
+//                return false;
+//            }
+//            String packageName=null;
+//            String[] packages=getPackageManager().getPackagesForUid(getCallingUid());
+//            /* 拿到包名*/
+//            if(packages!=null&&packages.length>0){
+//                packageName=packages[0];
+//            }
+//            if(TextUtils.isEmpty(packageName)){
+//                return false;
+//            }else if(!packageName.startsWith("com.base.hyl")){
+//                return false;
+//            }
+            return super.onTransact(code, data, reply, flags);
+        }
     };
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
+//        /* 增加权限判断*/
+//        int check=checkCallingOrSelfPermission("com.base.hyl.houylbaseprojects.permission.ACCESS_BOOK_SERVICE");
+//        if(check==PackageManager.PERMISSION_DENIED){/*如果权限未通过 则不处理*/
+//            return null;
+//        }
+//        
         return mBinder;
     }
 
@@ -151,22 +183,26 @@ public class BookManagerService extends Service {
             @Override
             public void run() {
                 /* 有问题的代码 销毁接受不到 unregisterListener*/
-                bookList.add(book);
-                final int N = mListenerList.beginBroadcast();
-                MyLog.wtf(TAG, "onNewBookArrived ,notify listeners :" + N);
+                if(mIsBookAdded.compareAndSet(false,true)){
+                    bookList.add(book);
+                    final int N = mListenerList.beginBroadcast();
+                    MyLog.wtf(TAG, "onNewBookArrived ,notify listeners :" + N);
 
-                for (int i = 0; i < N; i++) {
-                    IOnNewBookArrivedListerner listener = mListenerList.getBroadcastItem(i);//获取监听
-                    MyLog.wtf(TAG, "onNewBookArrived, notify listener :" + listener);
-                    try {
-                        if (listener != null) {
-                            listener.onNewBookArrived(book);
+                    for (int i = 0; i < N; i++) {
+                        IOnNewBookArrivedListerner listener = mListenerList.getBroadcastItem(i);//获取监听
+                        MyLog.wtf(TAG, "onNewBookArrived, notify listener :" + listener);
+                        try {
+                            if (listener != null) {
+                                listener.onNewBookArrived(book);
+                            }
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
                         }
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
                     }
+                    mListenerList.finishBroadcast();/* 每次结束就关闭*/
+                    mIsBookAdded.set(false);
                 }
-                mListenerList.finishBroadcast();/* 每次结束就关闭*/ 
+              
             }
         }).start();
         

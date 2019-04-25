@@ -1,4 +1,4 @@
-package com.base.hyl.houylbaseprojects.入口;
+package com.base.hyl.houylbaseprojects.rukou;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.base.hyl.houylbaseprojects.R;
-import com.base.hyl.houylbaseprojects.入口.bean.AgentBean;
+import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
 import java.util.List;
 
 

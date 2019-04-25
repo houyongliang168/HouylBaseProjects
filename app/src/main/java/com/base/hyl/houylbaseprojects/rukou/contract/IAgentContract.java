@@ -1,9 +1,9 @@
-package com.base.hyl.houylbaseprojects.入口.contract;
+package com.base.hyl.houylbaseprojects.rukou.contract;
 
 
 import com.base.common.base.CoreBasePresenter;
 import com.base.common.base.ICoreBaseControl;
-import com.base.hyl.houylbaseprojects.入口.bean.AgentBean;
+import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
 
 import java.util.List;
 
