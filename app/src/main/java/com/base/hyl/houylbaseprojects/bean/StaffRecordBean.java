@@ -1,5 +1,7 @@
 package com.base.hyl.houylbaseprojects.bean;
 
+import java.util.Objects;
+
 public class StaffRecordBean {
     public static final int ONLE_TITLE = 0;//只有标题
     public static final int MARK_INFO = 1;//标注信息
@@ -54,5 +56,21 @@ public class StaffRecordBean {
                 ", title='" + title + '\'' +
                 ", time='" + time + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StaffRecordBean that = (StaffRecordBean) o;
+        return type == that.type &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(time, that.time);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(type, title, time);
     }
 }

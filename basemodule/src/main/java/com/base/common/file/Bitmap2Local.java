@@ -37,7 +37,7 @@ public class Bitmap2Local {
     }
 
     public static void savePic(Bitmap bm, String picName) {
-        File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.taikanglife.isalessystem/" + picName);
+        File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com/" + picName);
         if (f.exists()) {
             f.delete();
         }

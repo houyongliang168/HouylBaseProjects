@@ -68,6 +68,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities=".ContentProvider.BookProvider"
+            android:name="com"
+            android:process=":provider"></provider>
     </application>
 
 </manifest>

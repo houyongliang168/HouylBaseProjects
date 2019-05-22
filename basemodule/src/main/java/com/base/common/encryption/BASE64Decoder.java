@@ -1,4 +1,4 @@
-package com.base.common.encryption;//package com.taikanglife.isalessystem.module.change_phone.tools;
+package com.base.common.encryption;
 
 import java.io.IOException;
 import java.io.OutputStream;

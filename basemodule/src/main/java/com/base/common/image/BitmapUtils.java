@@ -33,7 +33,7 @@ import java.io.InputStream;
 
 public class BitmapUtils {
     //将压缩后的图片保存的本地上指定路径中
-    private static String TMP_DIR = Environment.getExternalStorageDirectory().getPath() + "/com.taikanglife.isalessystem/picture/h5_picture";
+    private static String TMP_DIR = Environment.getExternalStorageDirectory().getPath() + "/com/picture/h5_picture";
     private static String TAG_LOG = "BitmapUtil";
 
     /**
