@@ -24,7 +24,7 @@ public class Main2Activity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Logger.e(TAG + "onDestroy");
-        Integer.parseInt()
+
     }
 
     @Override
