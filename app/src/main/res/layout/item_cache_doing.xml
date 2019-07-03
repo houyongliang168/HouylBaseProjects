@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="11dp">
+
+    <CheckBox
+        android:id="@+id/cb_doing_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="14dp"
+        android:background="@drawable/cache_edit_selector"
+        android:button="@null"
+        android:checked="false"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_doing_image"
+        android:layout_width="113dp"
+        android:layout_height="76dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/default_iv" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="17dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_doing_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingRight="12dp"
+            android:textColor="#524d49"
+            android:textSize="@dimen/text15"
+            tools:text="标标题标题题" />
+
+        <TextView
+            android:id="@+id/tv_doing_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingRight="12dp"
+            android:textColor="#bab4ae"
+            android:textSize="@dimen/text12"
+            tools:text="内容内容内容内容内容内容内容容内容" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="7dp"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dimen_21dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_doing_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:text="连接中…"
+                    android:textColor="#bab4ae"
+                    android:textSize="@dimen/text12" />
+
+                <ImageView
+                    android:id="@+id/iv_doing_conn"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/frame_cache_conn" />
+
+                <ProgressBar
+                    android:id="@+id/progressbar_doing"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="6dp"
+                    android:progressDrawable="@drawable/bg_progress"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_doing_state"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp"
+                android:src="@mipmap/cache_doing_pause" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

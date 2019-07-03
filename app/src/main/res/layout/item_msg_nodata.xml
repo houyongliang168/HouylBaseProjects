@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:id="@+id/rl_msg"
+    android:clickable="true"
+    android:background="@color/colorBg"
+   >
+
+        <ImageView
+            android:id="@+id/iv_msg_noMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_msg_noMsg"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dimen_23"
+            android:src="@mipmap/no_msg" />
+
+        <TextView
+            android:id="@+id/tv_msg_noMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="还没有消息呦"
+            android:textColor="@color/color555555"
+            android:textSize="@dimen/text14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_msg_noMsg"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin10"
+            android:text="请点击进行刷新"
+            android:textColor="@color/color555555"
+            android:textSize="@dimen/text14" />
+
+
+
+
+ </RelativeLayout>

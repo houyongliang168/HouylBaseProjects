@@ -37,8 +37,16 @@ public class AgentPresenter extends IAgentContract.AgentPresenter {
         agentBean = new AgentBean();
         agentBean.setKey("10002");
         agentBean.setDetails("测试其他");
+        list.add(agentBean);
 
+        agentBean = new AgentBean();
+        agentBean.setKey("10003");
+        agentBean.setDetails("测试通知");
+        list.add(agentBean);
 
+        agentBean = new AgentBean();
+        agentBean.setKey("10004");
+        agentBean.setDetails("测试下载");
         list.add(agentBean);
         return list;
     }

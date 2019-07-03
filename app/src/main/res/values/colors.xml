@@ -3,4 +3,5 @@
     <color name="colorPrimary">#ff5722</color><!--TOOLBAR-->
     <color name="colorPrimaryDark">#ff5722</color><!--电池栏-->
     <color name="colorAccent">#FF4081</color>
+    <color name="colorc8c8c8">#c8c8c8</color>
 </resources>

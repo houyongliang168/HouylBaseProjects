@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 def cfg = rootProject.ext.android
 def appId = rootProject.ext.appId
+def ver = rootProject.ext.appModule
 android {
 
     compileSdkVersion cfg.compileSdkVersion
@@ -54,10 +55,18 @@ android {
 //        }
 //    }
 
+    dataBinding {
+        enabled = true
+    }
+
 }
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':basemodule')
+    // 添加 RePlugin Plugin Library 依赖
+    implementation(project(':downlibrary')) {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
 
 }

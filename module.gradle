@@ -1,0 +1,59 @@
+ext {
+    appModule = [
+            "appId"            :  "com.taikanglife.isales.bank",
+            "versionCode"      :   1,
+            "versionName"      :  "1.0.3",
+            "JPUSH_APPKEY"     :  "454f3cbbb6afd7f0cb05aaeb", //JPush上注册的包名对应的appkey.
+            "JPUSH_CHANNEL"    :  "developer-default", //暂时填写默认值即可.
+    ]
+
+    pluginSDKModule = [
+            "versionCode"      :   1,
+            "versionName"      :  "1.0"
+    ]
+
+    loginModule = [
+            "appId"            :  "com.bank.login",
+            "versionCode"      :   1,
+            "versionName"      :  "1.0"
+    ]
+
+    downLibiaryModule = [
+            "appId"            :  "com.bank.main",
+            "versionCode"      :   2,
+            "versionName"      :  "2.0"
+    ]
+
+    webviewModule = [
+            "appId"            :  "com.bank.webview",
+            "versionCode"      :   2,
+            "versionName"      :  "1.0"
+    ]
+
+    trainModule = [
+            "appId"            :  "com.bank.train",
+            "versionCode"      :   1,
+            "versionName"      :  "1.0"
+    ]
+
+    policyModule = [
+            "appId"            :  "com.bank.policy",
+            "versionCode"      :   1,
+            "versionName"      :  "1.0"
+    ]
+
+    playModule = [
+            "appId"            :  "com.bank.play",
+            "versionCode"      :   1,
+            "versionName"      :  "1.0"
+    ]
+
+}
+
+
+
+
+
+
+
+

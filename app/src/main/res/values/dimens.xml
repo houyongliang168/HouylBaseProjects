@@ -1,3 +1,11 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin37">37dp</dimen>
+    <dimen name="dimen_2dp">2dp</dimen>
+    <dimen name="margin27">27dp</dimen>
+    <dimen name="margin18">18dp</dimen>
+    <dimen name="dimen_21dp">21dp</dimen>
+    <dimen name="text_12sp">12sp</dimen>
+    <dimen name="dimen_18dp">18dp</dimen>
+    <dimen name="dimen_23">23dp</dimen>
 </resources>

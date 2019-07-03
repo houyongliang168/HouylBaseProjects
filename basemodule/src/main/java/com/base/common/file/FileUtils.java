@@ -24,7 +24,7 @@ public class FileUtils {
      *
      * @param in
      * @return
-     * @throws Exception
+
      */
     public static byte[] readStreamToBytes(InputStream in) throws Exception {
         ByteArrayOutputStream out = new ByteArrayOutputStream();

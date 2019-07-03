@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_bg_productdoc"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="11dp"
+    android:paddingRight="12dp">
+
+    <CheckBox
+        android:id="@+id/cb_done_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="14dp"
+        android:background="@drawable/cache_edit_selector"
+        android:button="@null"
+        android:checked="false"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_done_image"
+        android:layout_width="113dp"
+        android:layout_height="76dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/default_iv" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="17dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_done_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#524d49"
+            android:textSize="@dimen/text15"
+            tools:text="标标题标题题" />
+
+        <TextView
+            android:id="@+id/tv_done_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#bab4ae"
+            android:textSize="@dimen/text12"
+            tools:text="内容内容内容内容内容内容内容容内容" />
+
+        <TextView
+            android:id="@+id/tv_done_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="7dp"
+            android:drawableLeft="@mipmap/folder_cache"
+            android:drawablePadding="6dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#bab4ae"
+            android:textSize="@dimen/text12"
+            tools:text="2434" />
+    </LinearLayout>
+</LinearLayout>

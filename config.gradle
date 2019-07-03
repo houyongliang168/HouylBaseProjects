@@ -6,7 +6,7 @@
 ext {
     android = [
             compileSdkVersion: 28,
-            minSdkVersion    : 17,
+            minSdkVersion    : 19,
             targetSdkVersion : 26,
             buildToolsVersion: "28.0.3",
             versionCode      : 1,
@@ -67,7 +67,7 @@ ext {
     layout_v = "1.0.2"
     androidTestCompile_v = "2.2.2"
     glide_transformations_v = "2.0.2"
-
+    SmartRefreshLayout_Lib_v="1.1.0-alpha-3"
   
 
     dependencies = [
@@ -95,8 +95,8 @@ ext {
             "glide_transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}",
 
 
-            "FlycoTabLayout_Lib"   : "com.flyco.tablayout:FlycoTabLayout_Lib:${FlycoTabLayout_Lib_v}"
-            
+            "FlycoTabLayout_Lib"   : "com.flyco.tablayout:FlycoTabLayout_Lib:${FlycoTabLayout_Lib_v}",
+            "SmartRefreshLayout"   : "com.scwang.smartrefresh:SmartRefreshLayout:${SmartRefreshLayout_Lib_v}"
             //            "butterknife"          : "com.jakewharton:butterknife:${butterknife_v}",
 //            "xbanner"              : "com.xhb:xbanner:${xbanner_v}",
 //            "nineoldandroids"      : "com.nineoldandroids:library:${nineoldandroids_v}",

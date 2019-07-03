@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@mipmap/cache_conn1"
+        android:duration="300" />
+    <item
+        android:drawable="@mipmap/cache_conn2"
+        android:duration="300" />
+    <item
+        android:drawable="@mipmap/cache_conn3"
+        android:duration="300" />
+    <item
+        android:drawable="@mipmap/cache_conn4"
+        android:duration="300" />
+    <item
+        android:drawable="@mipmap/cache_conn5"
+        android:duration="300" />
+    <item
+        android:drawable="@mipmap/cache_conn6"
+        android:duration="300" />
+</animation-list>
