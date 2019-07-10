@@ -17,6 +17,9 @@ import com.base.hyl.houylbaseprojects.xiazai.fragment.LiveCacheFragment;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.downlaod.DownInfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by zcc on 2018/1/12.
  * 视频缓存
@@ -32,6 +35,8 @@ public class LiveCacheActivity extends BaseActivity {
     private boolean mIsEdit = false;
     private static int fragmentPosition = 0;
     private DownInfo mDownInfo = null;
+    private List<Fragment> fragmentList=new ArrayList<>();
+    private TextView tv_add;
 
     /**
      * 供视频播放页面跳转至下载
@@ -76,6 +81,11 @@ public class LiveCacheActivity extends BaseActivity {
         tv_cache_edit.setOnClickListener(mOnClickListener);
         tab_cache = (SlidingTabLayout) findViewById(R.id.tab_cache);
         pager_cache = (ViewPager) findViewById(R.id.pager_cache);
+
+        tv_add = findViewById(R.id.tv_add);
+        tv_add.setOnClickListener(mOnClickListener);
+//        fragmentList.add(LiveCacheFragment.getInstance(mType[0], mIsEdit));
+//        fragmentList.add(LiveCacheFragment.getInstance(mType[1], mIsEdit));
         pager_cache.setAdapter(new PagerAdapter(getSupportFragmentManager()));
         tab_cache.setViewPager(pager_cache);
         pager_cache.setCurrentItem(fragmentPosition);
@@ -118,6 +128,10 @@ public class LiveCacheActivity extends BaseActivity {
                 if (adapter != null) {
                     adapter.notifyDataSetChanged();
                 }
+            }else if(v ==tv_add){//添加数据
+
+
+
             }
         }
     };

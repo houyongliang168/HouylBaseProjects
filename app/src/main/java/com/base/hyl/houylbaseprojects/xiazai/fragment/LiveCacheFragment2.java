@@ -9,9 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.base.common.base.BaseFragment;
@@ -20,7 +18,6 @@ import com.base.common.log.MyToast;
 import com.base.hyl.houylbaseprojects.App;
 import com.base.hyl.houylbaseprojects.R;
 import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity;
-import com.base.hyl.houylbaseprojects.xiazai.adpter.CacheLVAdapter;
 import com.base.hyl.houylbaseprojects.xiazai.adpter.CacheRVAdapter;
 import com.base.hyl.houylbaseprojects.xiazai.utils.NetUtils;
 import com.base.hyl.houylbaseprojects.xiazai.utils.SPUtils;
@@ -40,7 +37,7 @@ import java.util.List;
  * 视频缓存
  */
 
-public class LiveCacheFragment extends BaseFragment {
+public class LiveCacheFragment2 extends BaseFragment {
     private static final String FRAGMENTTYPE = "type";
     private static final String FRAGMENTEDIT = "edit";
     private static final String FRAGMENTDATA = "data";
@@ -51,7 +48,6 @@ public class LiveCacheFragment extends BaseFragment {
     private View ll_cache, ll_cache_pause, ll_cache_start;
     private View include_cache_delete, tv_cache_edit_delete;
     private ImageView iv_cache_edit_check;
-//    private CacheLVAdapter mAdapter = null;
     private CacheRVAdapter mAdapter = null;
     private boolean mIsChecked = false;
     private DownInfo mDownInfo = null;
@@ -60,21 +56,14 @@ public class LiveCacheFragment extends BaseFragment {
     private boolean isShowNet = false;//是否显示4G对话框提醒
 
 
-    public static LiveCacheFragment getInstance(String type, boolean isEdit) {
-        Bundle bundle = new Bundle();
-        bundle.putString(FRAGMENTTYPE, type);
-        bundle.putBoolean(FRAGMENTEDIT, isEdit);
-        LiveCacheFragment fragment = new LiveCacheFragment();
-        fragment.setArguments(bundle);
-        return fragment;
-    }
+    public LiveCacheFragment2(){
 
-    public static LiveCacheFragment getInstance(String type, boolean isEdit, DownInfo info) {
+    }
+    public static LiveCacheFragment2 getInstance(String type, boolean isEdit) {
         Bundle bundle = new Bundle();
         bundle.putString(FRAGMENTTYPE, type);
         bundle.putBoolean(FRAGMENTEDIT, isEdit);
-        bundle.putSerializable(FRAGMENTDATA, info);
-        LiveCacheFragment fragment = new LiveCacheFragment();
+        LiveCacheFragment2 fragment = new LiveCacheFragment2();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -89,7 +78,15 @@ public class LiveCacheFragment extends BaseFragment {
         bundle.putBoolean(FRAGMENTEDIT, isEdit);
     }
 
+    public void addData(String type,  DownInfo info) {
+        //TODO:update
+        mType = type;
+        mIsEdit = isEdit;
 
+        Bundle bundle = getArguments();
+        bundle.putString(FRAGMENTTYPE, type);
+        bundle.putBoolean(FRAGMENTEDIT, isEdit);
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
