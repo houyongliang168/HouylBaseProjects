@@ -1,6 +1,6 @@
 ext {
     appModule = [
-            "appId"            :  "com.taikanglife.isales.bank",
+            "appId"            :  "com.hyl.bank",
             "versionCode"      :   1,
             "versionName"      :  "1.0.3",
             "JPUSH_APPKEY"     :  "454f3cbbb6afd7f0cb05aaeb", //JPush上注册的包名对应的appkey.

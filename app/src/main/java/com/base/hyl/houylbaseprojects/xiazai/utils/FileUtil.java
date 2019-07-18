@@ -25,10 +25,10 @@ public class FileUtil {
 
         if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             if (Environment.getExternalStorageDirectory().getPath() != "") {
-                mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar + "com.taikanglife.isalessystem"+ File.separatorChar  ;
+                mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar + "com.hyl"+ File.separatorChar  ;
             }
         } else {
-            mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar+"com.taikanglife.isalessystem"+ File.separatorChar ;
+            mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar+"com.hyl"+ File.separatorChar ;
         }
 
 //        File folder = Environment.getExternalStoragePublicDirectory(mFilePath);

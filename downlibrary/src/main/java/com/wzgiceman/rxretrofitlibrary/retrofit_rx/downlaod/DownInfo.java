@@ -1,9 +1,11 @@
 package com.wzgiceman.rxretrofitlibrary.retrofit_rx.downlaod;
 
+
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpDownOnNextListener;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.Transient;
 import org.greenrobot.greendao.annotation.Generated;
 
@@ -84,9 +86,17 @@ public class DownInfo implements Serializable {
     public DownInfo(String url) {
         setUrl(url);
     }
+//    private DownloadException exception;//获取异常内容
+//
+//    public DownloadException getException() {
+//        return exception;
+//    }
+//
+//    public void setException(DownloadException exception) {
+//        this.exception = exception;
+//    }
 
-
-    @Generated(hash = 1391824428)
+    @Keep
     public DownInfo(long id, String savePath, String url, long countLength,
             long readLength, int stateInte, String imageUrl, String title,
             String description, boolean isBanner, String liveId) {
@@ -104,7 +114,7 @@ public class DownInfo implements Serializable {
     }
 
 
-    @Generated(hash = 928324469)
+    @Keep
     public DownInfo() {
     }
 

@@ -1,6 +1,8 @@
 package com.wzgiceman.rxretrofitlibrary.retrofit_rx.downlaod;
 
+import com.wzgiceman.rxretrofitlibrary.retrofit_rx.Api.Config;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.downlaod.DownLoadListener.DownloadInterceptor;
+import com.wzgiceman.rxretrofitlibrary.retrofit_rx.downlaod.DownLoadListener.DownloadThread;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.exception.HttpTimeException;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.exception.RetryWhenNetworkException;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.subscribers.ProgressDownSubscriber;
@@ -12,9 +14,13 @@ import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -36,17 +42,44 @@ public class HttpDownManager {
     /*记录下载数据*/
     private Set<DownInfo> downInfos;
     /*回调sub队列*/
-    private HashMap<String, ProgressDownSubscriber> subMap;
+    private ConcurrentHashMap<String, ProgressDownSubscriber> subMap;//线程安全的Hashmap
     /*单利对象*/
     private volatile static HttpDownManager INSTANCE;
     /*数据库类*/
     private DbDwonUtil db;
+    private  ExecutorService executorService;
+    private Config config;
 
     private HttpDownManager() {
-        downInfos = new HashSet<>();
-        subMap = new HashMap<>();
+        downInfos =  Collections.synchronizedSet(new HashSet<DownInfo>());
+        subMap = new ConcurrentHashMap<>();
         db = DbDwonUtil.getInstance();
+        executorService= Executors.newFixedThreadPool(2);//设置默认线程数量
     }
+
+    /* 提供判断是否 进行了配置信息*/
+    public Config getConfig(){
+        return config;
+    }
+
+
+    public HttpDownManager setConfig(Config config){
+        this.config=config;
+        return this;
+    }
+
+    /**
+     *  调用前 需要设置config
+     * @return
+     */
+    public HttpDownManager setFixedThreadPoolNums(){
+       if(config==null){
+           return this;//返回之前的内容
+       }
+        executorService= Executors.newFixedThreadPool(config.getDownloadThread());//设置默认线程数量
+        return this;
+    }
+
 
     /**
      * 获取单例
@@ -88,9 +121,9 @@ public class HttpDownManager {
             //手动创建一个OkHttpClient并设置超时时间
             builder.connectTimeout(info.getConnectonTime(), TimeUnit.SECONDS);
             builder.addInterceptor(interceptor);
-
+            OkHttpClient build = builder.build();
             Retrofit retrofit = new Retrofit.Builder()
-                    .client(builder.build())
+                    .client(build)
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .baseUrl(getBasUrl(info.getUrl()))
@@ -99,25 +132,27 @@ public class HttpDownManager {
             info.setService(httpService);
             downInfos.add(info);
         }
-        /*得到rx对象-上一次下載的位置開始下載*/
-        httpService.download("bytes=" + info.getReadLength() + "-", info.getUrl())
-                /*指定线程*/
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                   /*失败后的retry配置*/
-                .retryWhen(new RetryWhenNetworkException())
-                /*读取下载写入文件*/
-                .map(new Func1<ResponseBody, DownInfo>() {
-                    @Override
-                    public DownInfo call(ResponseBody responseBody) {
-                        writeCaches(responseBody, new File(info.getSavePath()), info);
-                        return info;
-                    }
-                })
-                /*回调线程*/
-                .observeOn(AndroidSchedulers.mainThread())
-                /*数据回调*/
-                .subscribe(subscriber);
+
+        executorService.execute(new DownloadThread(info,httpService,config));
+//        /*得到rx对象-上一次下載的位置開始下載*/
+//        httpService.download("bytes=" + info.getReadLength() + "-", info.getUrl())
+//                /*指定线程*/
+//                .subscribeOn(Schedulers.io())
+//                .unsubscribeOn(Schedulers.io())
+//                   /*失败后的retry配置*/
+//                .retryWhen(new RetryWhenNetworkException())
+//                /*读取下载写入文件*/
+//                .map(new Func1<ResponseBody, DownInfo>() {
+//                    @Override
+//                    public DownInfo call(ResponseBody responseBody) {
+//                        writeCaches(responseBody, new File(info.getSavePath()), info);
+//                        return info;
+//                    }
+//                })
+//                /*回调线程*/
+//                .observeOn(AndroidSchedulers.mainThread())
+//                /*数据回调*/
+//                .subscribe(subscriber);
 
     }
 
