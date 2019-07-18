@@ -5,6 +5,9 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.base.common.log.MyLog;
+import com.base.common.utils.ApplicationTool;
+import com.base.hyl.houylbaseprojects.db.DaoMaster;
+import com.base.hyl.houylbaseprojects.db.DaoSession;
 import com.base.widget.smartRefresh.MyRefreshFooter;
 import com.base.widget.smartRefresh.MyRefreshHeader;
 import com.orhanobut.logger.Logger;
@@ -182,4 +185,34 @@ public class App extends MultiDexApplication {
             }
         });
     }
+
+    private static DaoSession daoSession;
+    private static DaoMaster daoMaster;
+
+    public static DaoSession getDaoSession() {
+        if (mContext == null) {
+            mContext = ApplicationTool.getInstance().getApplication();
+        }
+        if (daoSession == null && mContext != null) {
+            if (daoSession == null) {
+                daoMaster = getDaoMaster(mContext);
+            }
+            daoSession = daoMaster.newSession();
+        }
+        return daoSession;
+    }
+
+    /**
+     * 取得DaoMaster
+     *
+     * @return
+     */
+    public static DaoMaster getDaoMaster(Context context) {
+        if (daoMaster == null) {
+            DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(context, "houyl-db", null);
+            daoMaster = new DaoMaster(helper.getWritableDatabase());
+        }
+        return daoMaster;
+    }
+
 }

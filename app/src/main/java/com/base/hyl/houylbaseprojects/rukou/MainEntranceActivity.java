@@ -71,13 +71,12 @@ public class MainEntranceActivity extends AppCompatActivity {
 
     private void initView() {
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("侯永亮的项目");
         setSupportActionBar(toolbar);
         vp_control_srcoll=  findViewById(R.id.vp_control_srcoll);
         tab=findViewById(R.id.tab);
         fab = findViewById(R.id.fab);
         vp_control_srcoll.setOffscreenPageLimit(3);
-       
-       
 
     }
 

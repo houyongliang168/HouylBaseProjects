@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 def cfg = rootProject.ext.android
 def appId = rootProject.ext.appId
 def ver = rootProject.ext.appModule
+def librarys = rootProject.ext.dependencies
+apply plugin: 'org.greenrobot.greendao'//添加 greendao 处理
 android {
 
     compileSdkVersion cfg.compileSdkVersion
@@ -58,15 +60,22 @@ android {
     dataBinding {
         enabled = true
     }
+/*greendao 配置*/
 
+}
+greendao {
+    schemaVersion 2
+    daoPackage 'com.base.hyl.houylbaseprojects.db'
+    targetGenDir 'src/main/java'
 }
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':basemodule')
+    implementation 'org.greenrobot:greendao:3.1.0'
+    implementation 'org.greenrobot:greendao-generator:3.1.0'
     // 添加 RePlugin Plugin Library 依赖
-    implementation(project(':downlibrary')) {
-        exclude group: 'com.google.code.findbugs', module: 'jsr305'
-    }
-
+   // implementation(project(':downlibrary')) {
+   //     exclude group: 'com.google.code.findbugs', module: 'jsr305'
+   // }
 }

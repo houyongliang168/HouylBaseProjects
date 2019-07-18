@@ -15,19 +15,19 @@ import android.widget.TextView;
 import com.base.common.base.BaseFragment;
 import com.base.common.log.MyLog;
 import com.base.common.log.MyToast;
-import com.base.hyl.houylbaseprojects.App;
 import com.base.hyl.houylbaseprojects.R;
-import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity;
-import com.base.hyl.houylbaseprojects.xiazai.adpter.CacheRVAdapter;
+import com.base.hyl.houylbaseprojects.download.domain.DownloadInfo;
+import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity2;
+import com.base.hyl.houylbaseprojects.xiazai.adpter.CacheingRVAdapter;
+import com.base.hyl.houylbaseprojects.xiazai.db.DBController;
+import com.base.hyl.houylbaseprojects.xiazai.db.DownInfo;
 import com.base.hyl.houylbaseprojects.xiazai.utils.NetUtils;
 import com.base.hyl.houylbaseprojects.xiazai.utils.SPUtils;
 import com.base.widget.dialog.MyDialog;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.RxRetrofitApp;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.downlaod.DownInfo;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.downlaod.DownState;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.utils.DbDwonUtil;
+
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,16 +48,21 @@ public class LiveCacheFragment2 extends BaseFragment {
     private View ll_cache, ll_cache_pause, ll_cache_start;
     private View include_cache_delete, tv_cache_edit_delete;
     private ImageView iv_cache_edit_check;
-    private CacheRVAdapter mAdapter = null;
+    private CacheingRVAdapter mAdapter = null;
     private boolean mIsChecked = false;
-    private DownInfo mDownInfo = null;
-    private List<DownInfo> listData = null;
-    private DbDwonUtil dbUtil = null;
-    private boolean isShowNet = false;//是否显示4G对话框提醒
+    private List<DownInfo> listData = new ArrayList<>();
 
+    private boolean isShowNet = false;//是否显示4G对话框提醒
+    private String mFilePath;
+    private DBController dbController;
 
     public LiveCacheFragment2(){
-
+        try {
+            dbController= DBController.getInstance(getActivity());
+        } catch (
+                SQLException e) {
+            e.printStackTrace();
+        }
     }
     public static LiveCacheFragment2 getInstance(String type, boolean isEdit) {
         Bundle bundle = new Bundle();
@@ -78,14 +83,42 @@ public class LiveCacheFragment2 extends BaseFragment {
         bundle.putBoolean(FRAGMENTEDIT, isEdit);
     }
 
-    public void addData(String type,  DownInfo info) {
-        //TODO:update
-        mType = type;
-        mIsEdit = isEdit;
+    public void addData(   DownInfo info) {
 
-        Bundle bundle = getArguments();
-        bundle.putString(FRAGMENTTYPE, type);
-        bundle.putBoolean(FRAGMENTEDIT, isEdit);
+            if (info != null) {
+                String liveId = info.getLiveId();
+                MyLog.wtf("zcc", "liveId:" + liveId);
+                DownloadInfo downInfo = dbController.findDownloadedInfoById(liveId);
+                if (downInfo != null) {
+                    //已在数据库中
+                    if (downInfo.getStatus() == DownloadInfo.STATUS_COMPLETED) {
+                        MyToast.showShort("该视频已下载完成");
+                    } else {
+                        MyToast.showShort("该视频已在下载列表中");
+                    }
+                } else {
+
+                    String url = info.getUrl();
+                    MyLog.wtf("zcc", "downfileUrl:" + url);
+                    String[] urlSplit = url.split("/");
+                    String fileName = urlSplit[urlSplit.length - 1];
+                    MyLog.wtf("zcc", "downfileName:" + fileName);
+                    File outputFile = new File(mFilePath, fileName);
+                    info.setId(System.currentTimeMillis());
+                    info.setSavePath(outputFile.getAbsolutePath());
+                    MyLog.wtf("zcc", "downfileSavepath:" + outputFile.getAbsolutePath());
+
+                }
+            }
+
+
+        listData.add(info);
+
+        if(mAdapter!=null){
+            mAdapter.addData(  info);
+        }
+
+
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,20 +127,34 @@ public class LiveCacheFragment2 extends BaseFragment {
         if (bundle != null) {
             mType = bundle.getString(FRAGMENTTYPE);
             mIsEdit = bundle.getBoolean(FRAGMENTEDIT);
-            if (!mType.equals("1")) {
-                mDownInfo = (DownInfo) bundle.getSerializable(FRAGMENTDATA);
+        }
+        getFileD();
+
+    }
+
+    private void reflashData() {
+        List<DownloadInfo> allData = dbController.findAllDownloading();
+
+        if(allData!=null&&allData.size()>0){
+            listData.clear();
+            for (int i = 0; i < allData.size(); i++) {
+                listData.add(concers2DownInfo(allData.get(i)));
             }
         }
-        RxRetrofitApp.init(App.getContext());
-        initData();
+
+        if(mAdapter!=null){
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public DownInfo  concers2DownInfo(DownloadInfo downloadInfo){
+
+        return dbController.convertDownInfo(downloadInfo);
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         if (isVisibleToUser) {
-            if (mType.equals("1")) {//done
-                isShowNet = false;
-            } else {
                 isShowNet = true;
                 if (mAdapter != null) {
                     MyLog.wtf("zcc", "show");
@@ -115,41 +162,18 @@ public class LiveCacheFragment2 extends BaseFragment {
                         showNetDialog();
                     }
                 }
-            }
-            if (dbUtil != null && mAdapter != null) {
-                List<DownInfo> allData = dbUtil.queryDownAll();
-                listData = new ArrayList<>();
-                if (mType.equals("1")) {//done
-                    for (DownInfo info : allData) {
-                        if (info.getState() == DownState.FINISH) {
-                            listData.add(info);
-                        }
-                    }
-                } else {
-                    for (DownInfo info : allData) {
-                        if (info.getState() != DownState.FINISH) {
-                            listData.add(info);
-                        }
-                    }
-                }
-                mAdapter.update(listData);
-            }
-        } else {
-            if (mType.equals("2") && dbUtil != null && mAdapter != null) {
-                List<DownInfo> dataList = mAdapter.getList();
-             /*记录退出时下载任务的状态-复原用*/
-                for (DownInfo downInfo : dataList) {
-                    dbUtil.update(downInfo);
-                }
-            }
+
+             reflashData();
+
         }
         super.setUserVisibleHint(isVisibleToUser);
     }
 
 
-    private void initData() {
+
+    private void getFileD() {
         /* 获取文件夹*/
-        String mFilePath = "/storage/emulated/0/hyl/";
+        mFilePath = "/storage/emulated/0/hyl/";
         if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//无sd 卡
             if (Environment.getExternalStorageDirectory().getPath() != "") {
                 mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar + "hyl"+ File.separatorChar  ;
@@ -157,7 +181,7 @@ public class LiveCacheFragment2 extends BaseFragment {
         } else {//有sd 卡
             mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar + "hyl"+ File.separatorChar;
         }
-         File folder = new File(mFilePath);
+        File folder = new File(mFilePath);
         //File folder = Environment.getExternalStoragePublicDirectory(mFilePath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -165,67 +189,6 @@ public class LiveCacheFragment2 extends BaseFragment {
         }else{
             MyToast.showShort("存在");
         }
-
-        dbUtil = DbDwonUtil.getInstance();
-        if (mDownInfo != null) {
-            String liveId = mDownInfo.getLiveId();
-            MyLog.wtf("zcc", "liveId:" + liveId);
-            DownInfo downInfo = dbUtil.queryDownById(liveId);
-            if (downInfo != null) {
-                //已在数据库中
-                if (downInfo.getState() == DownState.FINISH) {
-                    MyToast.showShort("该视频已下载完成");
-                } else {
-                    MyToast.showShort("该视频已在下载列表中");
-                }
-            } else {
-
-                String url = mDownInfo.getUrl();
-                MyLog.wtf("zcc", "downfileUrl:" + url);
-                String[] urlSplit = url.split("/");
-                String fileName = urlSplit[urlSplit.length - 1];
-                MyLog.wtf("zcc", "downfileName:" + fileName);
-                File outputFile = new File(mFilePath, fileName);
-                mDownInfo.setId(System.currentTimeMillis());
-                mDownInfo.setState(DownState.DOWN);
-                mDownInfo.setSavePath(outputFile.getAbsolutePath());
-                MyLog.wtf("zcc", "downfileSavepath:" + outputFile.getAbsolutePath());
-                dbUtil.save(mDownInfo);
-            }
-        }
-        List<DownInfo> allData = dbUtil.queryDownAll();
-        listData = new ArrayList<>();
-        if (mType.equals("1")) {//done
-            for (DownInfo info : allData) {
-                if (info.getState() == DownState.FINISH) {
-                    listData.add(info);
-                }
-            }
-        } else {
-            for (DownInfo info : allData) {
-                if (info.getState() != DownState.FINISH) {
-                    listData.add(info);
-                }
-            }
-        }
-        mAdapter = new CacheRVAdapter(this.getActivity(), listData);
-        mAdapter.setListener(new CacheRVAdapter.Listener() {
-            @Override
-            public void setCBCheckListener(boolean isCheck) {
-            setCBCheck(isCheck);
-            }
-
-            @Override
-            public boolean showNetDialog() {
-              return   showNetDialog();
-
-            }
-
-            @Override
-            public void setDelLayoutGone() {
-                setDelLayoutGone();
-            }
-        });
     }
 
     @Override
@@ -254,37 +217,44 @@ public class LiveCacheFragment2 extends BaseFragment {
         iv_cache_edit_check.setOnClickListener(mOnClickListener);
         tv_cache_edit_delete = include_cache_delete.findViewById(R.id.tv_cache_edit_delete);
         tv_cache_edit_delete.setOnClickListener(mOnClickListener);
-
-        if (mType.equals("1")) {//done
-            ll_cache.setVisibility(View.GONE);
-            if (mIsEdit) {
-                include_cache_delete.setVisibility(View.VISIBLE);
-                mAdapter.setEdit(true, false);
-            } else {
-                include_cache_delete.setVisibility(View.GONE);
-                mAdapter.setEdit(false, false);
+        /* 设置相关参数*/
+        mAdapter = new CacheingRVAdapter(this.getActivity(), listData);
+        mAdapter.setListener(new CacheingRVAdapter.Listener() {
+            @Override
+            public void setCBCheckListener(boolean isCheck) {
+                LiveCacheFragment2.this.setCBCheck(isCheck);
             }
 
-        } else {//doing
-            if (isShowNet) {
-                MyLog.wtf("zcc", "show");
-                if (NetUtils.getNetworkType(getActivity()) == 4) {//2g3g4g
-                    showNetDialog();
-                }
+            @Override
+            public boolean showNetDialog() {
+                return     LiveCacheFragment2.this.showNetDialog();
+
             }
-            if (mIsEdit) {
-                include_cache_delete.setVisibility(View.VISIBLE);
-                ll_cache.setVisibility(View.GONE);
-                mAdapter.setEdit(true, false);
-            } else {
-                ll_cache.setVisibility(View.VISIBLE);
-                include_cache_delete.setVisibility(View.GONE);
-                mAdapter.setEdit(false, false);
+
+            @Override
+            public void setDelLayoutGone() {
+                LiveCacheFragment2.this.setDelLayoutGone();
             }
-        }
+        });
         recy_cache.setLayoutManager(new LinearLayoutManager(getActivity()));
         recy_cache.setAdapter(mAdapter);
 
+        if (isShowNet) {
+            MyLog.wtf("zcc", "show");
+            if (NetUtils.getNetworkType(getActivity()) == 4) {//2g3g4g
+                showNetDialog();
+            }
+        }
+        if (mIsEdit) {
+            include_cache_delete.setVisibility(View.VISIBLE);
+            ll_cache.setVisibility(View.GONE);
+            mAdapter.setEdit(true, false);
+        } else {
+            ll_cache.setVisibility(View.VISIBLE);
+            include_cache_delete.setVisibility(View.GONE);
+            mAdapter.setEdit(false, false);
+        }
+        reflashData();
         return root;
     }
 
@@ -340,6 +310,20 @@ public class LiveCacheFragment2 extends BaseFragment {
         }
     }
 
+    public void setEditStatus(boolean mIsEdit){
+        this.mIsEdit=mIsEdit;
+        if (mIsEdit) {
+            include_cache_delete.setVisibility(View.VISIBLE);
+            ll_cache.setVisibility(View.GONE);
+            mAdapter.setEdit(true, false);
+        } else {
+            ll_cache.setVisibility(View.VISIBLE);
+            include_cache_delete.setVisibility(View.GONE);
+            mAdapter.setEdit(false, false);
+        }
+
+    }
+
     /**
      * 设置删除布局gone
      */
@@ -353,7 +337,7 @@ public class LiveCacheFragment2 extends BaseFragment {
             include_cache_delete.setVisibility(View.GONE);
             mAdapter.setEdit(false, false);
         }
-        LiveCacheActivity activity = (LiveCacheActivity) getActivity();
+        LiveCacheActivity2 activity = (LiveCacheActivity2) getActivity();
         activity.setEditFalse();
     }
 

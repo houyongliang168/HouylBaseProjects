@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -27,11 +28,15 @@ import com.base.hyl.houylbaseprojects.broadcastReceiver.PlayMusicReceiver;
 import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
 import com.base.hyl.houylbaseprojects.rukou.contract.IAgentContract;
 import com.base.hyl.houylbaseprojects.rukou.present.AgentPresenter;
-import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity;
+
+import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity2;
 import com.base.widget.recycler.RecyclerViewClickListener;
 
 
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -41,6 +46,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  */
 
 public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements IAgentContract.IAgentView {
+
 
 
     private RecyclerView recycl_agent;
@@ -60,6 +66,8 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
     @Override
     public void initUI(View view, @Nullable Bundle savedInstanceState) {
         recycl_agent = (RecyclerView) view.findViewById(R.id.recycl_agent);
+
+
     }
 
     @Override
@@ -98,13 +106,19 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
                         sendNotification();
                         break;
                     case "10003":/*10003 测试通知*/
-                        initNotification();
+                       initNotification();
+//                        String aGoto="113232&22121";
+//                        String[] aGotos= aGoto.split("&");
+//                        if(aGotos.length>1){
+//                            Log.e(aGotos[0],aGotos[1]+"");
+//                        }
+
                         break;
                     case "10004":/*10004 测试下载*/
 
-                        Intent intent_two = new Intent(getContext(), LiveCacheActivity.class);
-                        intent_two.putExtra("TAG", "1");//设置标识 展示不同 的抬头
-                        startActivity(intent_two);
+
+                        Intent intent = new Intent(getActivity(), LiveCacheActivity2.class);
+                        getActivity().startActivity(intent);
                         break;
                     default:
                         break;

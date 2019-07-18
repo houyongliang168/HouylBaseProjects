@@ -29,6 +29,8 @@
             android:textColor="#ffffff"
             android:textSize="@dimen/text20" />
 
+
+
         <TextView
             android:id="@+id/tv_cache_edit"
             android:layout_width="wrap_content"
@@ -41,6 +43,24 @@
             android:text="编辑"
             android:textColor="#ffffff"
             android:textSize="@dimen/text17" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="添加数据"
+            android:textColor="#ffffff"
+            android:clickable="true"
+            android:textSize="@dimen/text20" />
+
+
+
+
+
     </RelativeLayout>
 
     <com.flyco.tablayout.SlidingTabLayout xmlns:tl="http://schemas.android.com/apk/res-auto"
