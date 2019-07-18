@@ -40,8 +40,6 @@ import static com.base.hyl.houylbaseprojects.download.domain.DownloadInfo.STATUS
  */
 
 public class CacheingRVAdapter extends RecyclerView.Adapter<CacheingRVAdapter.ViewHolder2> {
-    public static final int TYPE_CACHE_DONE = 0;
-    public static final int TYPE_CACHE_DOING = 1;//将type写入list每个item对象的type属性中
     private Context mContext;
     private boolean mIsEdit = false;
     private boolean mIsAllEdit = false;
@@ -166,16 +164,20 @@ public class CacheingRVAdapter extends RecyclerView.Adapter<CacheingRVAdapter.Vi
 
 
 
-public void  addData( DownInfo data){
-notifyDataSetChanged();
+    public void  addData( DownInfo data){
+        if(data==null){
+            return;
+        }
+        DownloadInfo  build = new DownloadInfo.Builder().setUrl(data.getUrl())
+                .setPath(data.getSavePath())
+                .setId(data.getLiveId())
+                .build();
+        downloadManager.download(build);
+        dbController.createOrUpdate(data);
+        notifyDataSetChanged();
 
 
-}
-
-
-
-
-
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -413,18 +415,24 @@ notifyDataSetChanged();
                         break;
 
                     case DownloadInfo.STATUS_PREPARE_DOWNLOAD:
+                        tv_doing_state.setText("连接中");
                         iv_cache_conn_frame.start();
+                        iv_doing_conn.setVisibility(View.VISIBLE);
+                        progressbar_doing.setVisibility(View.GONE);
                         break;
                     case STATUS_COMPLETED:
                         tv_doing_state.setText("下载完成");
                         mList.remove(data);
-                        notifyDataSetChanged();
+                        CacheingRVAdapter. this. notifyDataSetChanged();
                         break;
                     case STATUS_REMOVED:
                         defaultStatusUI();
                         break;
                     case STATUS_WAIT:
                         iv_cache_conn_frame.start();
+                        tv_doing_state.setText("连接中");
+                        iv_doing_conn.setVisibility(View.VISIBLE);
+                        progressbar_doing.setVisibility(View.GONE);
                         break;
                 }
             }
@@ -433,6 +441,7 @@ notifyDataSetChanged();
         private void defaultStatusUI() {
             iv_cache_conn_frame.start();
             progressbar_doing.setProgress(0);
+           // progressbar_doing.setVisibility(View.GONE);
             tv_doing_state.setTextColor(Color.parseColor("#f51706"));
             tv_doing_state.setText("点击下载");
         }

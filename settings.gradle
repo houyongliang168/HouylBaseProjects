@@ -1,1 +1,2 @@
-include ':app', ':basemodule', ':baserecyclerview',':downlibrary'
+include ':app', ':basemodule', ':baserecyclerview'
+//,':downlibrary'

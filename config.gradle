@@ -7,7 +7,7 @@ ext {
     android = [
             compileSdkVersion: 28,
             minSdkVersion    : 19,
-            targetSdkVersion : 26,
+            targetSdkVersion : 22,
             buildToolsVersion: "28.0.3",
             versionCode      : 1,
             versionName      : "1.6.6 我来测试的"
@@ -96,8 +96,7 @@ ext {
 
 
             "FlycoTabLayout_Lib"   : "com.flyco.tablayout:FlycoTabLayout_Lib:${FlycoTabLayout_Lib_v}",
-            "SmartRefreshLayout"   : "com.scwang.smartrefresh:SmartRefreshLayout:${SmartRefreshLayout_Lib_v}"
-            //            "butterknife"          : "com.jakewharton:butterknife:${butterknife_v}",
+            "SmartRefreshLayout"   : "com.scwang.smartrefresh:SmartRefreshLayout:${SmartRefreshLayout_Lib_v}",            //            "butterknife"          : "com.jakewharton:butterknife:${butterknife_v}",
 //            "xbanner"              : "com.xhb:xbanner:${xbanner_v}",
 //            "nineoldandroids"      : "com.nineoldandroids:library:${nineoldandroids_v}",
 //            "fresco"               : "com.facebook.fresco:fresco:${fresco_v}",
@@ -110,7 +109,7 @@ ext {
 //            "commons_codec"        : "commons-codec:commons-codec:${commons_codec_v}",
 
 //            "greendao"             : "org.greenrobot:greendao:${green_dao_v}",
-//            "greendao_generator"   : "org.greenrobot:greendao-generator:${greendao_generator_v}",
+//            "greendao_generator"   : "org.greenrobot:greendao-generator:${greendao_generator_v}"
 //            "PickerView"           : "com.contrarywind:Android-PickerView:${PickerView_v}",
 //            "rxpermissions"        : "com.tbruyelle.rxpermissions:rxpermissions:${rxpermissions_v}",
 //            "RecordWave"           : "com.github.CarGuo:RecordWave:${RecordWave_v}",

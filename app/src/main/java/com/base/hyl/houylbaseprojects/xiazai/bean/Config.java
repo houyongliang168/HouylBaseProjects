@@ -3,8 +3,8 @@ package com.base.hyl.houylbaseprojects.xiazai.bean;
 public class Config {
     private int connectTimeout = 10000;
     private int readTimeout = 10000;
-    private int downloadThread = 3;
-    private int eachDownloadThread = 2;
+    private int downloadThread = 2;
+    private int eachDownloadThread = 1;
 
 
     public int getConnectTimeout() {
