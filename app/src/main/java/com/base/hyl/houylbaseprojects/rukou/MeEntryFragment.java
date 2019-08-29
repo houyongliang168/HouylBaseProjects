@@ -1,42 +1,34 @@
 package com.base.hyl.houylbaseprojects.rukou;
 
 import android.annotation.SuppressLint;
-import android.app.AppOpsManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RemoteViews;
 
 import com.base.common.base.CoreBaseFragment;
-import com.base.common.log.MyToast;
 import com.base.hyl.houylbaseprojects.Main2Activity;
-import com.base.hyl.houylbaseprojects.MainActivity;
 import com.base.hyl.houylbaseprojects.R;
 import com.base.hyl.houylbaseprojects.aidl.BookManagerActivity;
-import com.base.hyl.houylbaseprojects.broadcastReceiver.PlayMusicReceiver;
 import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
 import com.base.hyl.houylbaseprojects.rukou.contract.IAgentContract;
 import com.base.hyl.houylbaseprojects.rukou.present.AgentPresenter;
 
-import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity2;
+import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity;
 import com.base.widget.recycler.RecyclerViewClickListener;
 
 
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -116,9 +108,10 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
                         break;
                     case "10004":/*10004 测试下载*/
 
+                        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 
-                        Intent intent = new Intent(getActivity(), LiveCacheActivity2.class);
-                        getActivity().startActivity(intent);
+//                        Intent intent = new Intent(getActivity(), LiveCacheActivity.class);
+//                        getActivity().startActivity(intent);
                         break;
                     default:
                         break;

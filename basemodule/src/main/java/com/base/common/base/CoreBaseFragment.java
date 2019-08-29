@@ -8,8 +8,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.base.common.log.MyLog;
+import com.base.common.log.MyToast;
+import com.base.hyl.houbasemodule.R;
+import com.base.widget.dialog.MyDialog;
 
 
 /**
@@ -30,6 +34,8 @@ public abstract class CoreBaseFragment<P extends CoreBasePresenter> extends Base
     private boolean mIsInited = false;//是否已经做过数据加载
     private boolean mIsPrepared = false;//判断 UI是否准备好，因为数据加载后需要更新UI
     private View view;
+    private MyDialog myDialog;
+    private DialogListener listener;
 
     public P getPresneter() {
         return mPresenter;
@@ -154,6 +160,70 @@ public abstract class CoreBaseFragment<P extends CoreBasePresenter> extends Base
      * 初始化控件
      */
     public abstract void initUI(View view, @Nullable Bundle savedInstanceState);
+
+
+    @Override
+    public void showError(String msg) {
+        MyToast.showShort(msg);
+    }
+
+    @Override
+    public void showDialog() {
+        showProgressDialog();
+    }
+
+    @Override
+    public void dissmissDialog() {
+        dismissProgressDialog();
+    }
+    @Override
+    public void showErrorDialog(String msg) {
+        if (myDialog == null) {
+            myDialog = new MyDialog(getActivity());
+            return;
+        }
+        myDialog.showDialog(R.layout.basemodule_dialog_verify);
+        TextView tv_msg = (TextView) myDialog.findViewById(R.id.tv_warn_msg);
+        tv_msg.setText(msg);
+        myDialog.findViewById(R.id.tv_warn_true).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+    }
+
+    @Override
+    public void showDialogYesOrNo(String msg, final boolean isFinish, final DialogListener listener) {
+        this.listener=listener;
+        if (myDialog == null) {
+            myDialog = new MyDialog(getActivity());
+        }
+        myDialog.showDialog(R.layout.basemodule_dialog_sure_and_cancel_type_one);
+        TextView tv_msg = (TextView) myDialog.findViewById(R.id.tv_content);
+        tv_msg.setText(msg);
+        myDialog.findViewById(R.id.dialog_exit_true).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isFinish) {
+                    getActivity().finish();
+                }
+                if(listener!=null){
+                    listener.onClickListenerYes();
+                }
+                myDialog.dismiss();
+            }
+        });
+        myDialog.findViewById(R.id.dialog_exit_false).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listener!=null){
+                    listener.onClickListenerNo();
+                }
+                myDialog.dismiss();
+            }
+        });
+    }
 
 
 }

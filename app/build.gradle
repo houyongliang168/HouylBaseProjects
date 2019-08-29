@@ -27,7 +27,7 @@ android {
         }
     }
     //暂时不处理 20190122
-    productFlavors {
+   // productFlavors {
 //        cloud {
 //            //云部署版本
 //            resValue "string", "app_name", "MyLuban"
@@ -41,6 +41,9 @@ android {
 //                    JPUSH_APPKEY : "a6d4d20aa61934aeee", //JPush上注册的包名对应的appkey.
 //                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
 //            ]
+    dataBinding {
+        enabled = true
+    }
     }
 //        entp {
 //            //appid 拼接，实现多个版本
@@ -57,12 +60,10 @@ android {
 //        }
 //    }
 
-    dataBinding {
-        enabled = true
-    }
+
 /*greendao 配置*/
 
-}
+//}
 greendao {
     schemaVersion 2
     daoPackage 'com.base.hyl.houylbaseprojects.db'
@@ -74,8 +75,6 @@ dependencies {
     implementation project(':basemodule')
     implementation 'org.greenrobot:greendao:3.1.0'
     implementation 'org.greenrobot:greendao-generator:3.1.0'
-    // 添加 RePlugin Plugin Library 依赖
-   // implementation(project(':downlibrary')) {
-   //     exclude group: 'com.google.code.findbugs', module: 'jsr305'
-   // }
+    implementation 'org.greenrobot:eventbus:3.0.0'
+
 }

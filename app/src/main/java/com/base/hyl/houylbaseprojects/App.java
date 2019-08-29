@@ -10,6 +10,7 @@ import com.base.hyl.houylbaseprojects.db.DaoMaster;
 import com.base.hyl.houylbaseprojects.db.DaoSession;
 import com.base.widget.smartRefresh.MyRefreshFooter;
 import com.base.widget.smartRefresh.MyRefreshHeader;
+
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
@@ -46,6 +47,7 @@ public class App extends MultiDexApplication {
         mContext = this;
 
         Logger.init();
+
 
     }
 

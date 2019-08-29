@@ -90,19 +90,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- aidl 权限声明并使用-->
     <permission
         android:name="com.base.hyl.houylbaseprojects.permission"
@@ -160,7 +147,7 @@
         <activity android:name=".messenger.MessengerActivity" />
         <!-- 添加下载测试-->
         <activity android:name=".xiazai.activity.LiveCacheActivity" />
-        <activity android:name=".xiazai.activity.LiveCacheActivity2" />
+        <activity android:name=".xiazai.activity.LiveCacheActivity" />
         <activity
             android:name=".aidl.BookManagerActivity"
             android:label="@string/title_activity_book_manager"

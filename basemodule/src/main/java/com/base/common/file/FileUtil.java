@@ -75,7 +75,19 @@ public class FileUtil {
             file.delete();
         }
     }
-
+    /**
+     * 删除单个文件
+     *
+     * @param filePath 被删除文件的文件名
+     * @return 文件删除成功返回true，否则返回false
+     */
+    public static boolean deleteFile(String filePath) {
+        File file = new File(filePath);
+        if (file.isFile() && file.exists()) {
+            return file.delete();
+        }
+        return false;
+    }
     // 获取文件、文件夹大小
     public static long getFileSize(File file) {
         //判断文件是否存在

@@ -6,21 +6,21 @@ import java.util.List;
 public class QuickSortTest {
     /* 测试的入口 未完待续*/
     public static void main(String[] args) {
-        QuickBean q1 = new QuickBean(25, "哈哈");
-        QuickBean q2 = new QuickBean(2, "哈哈1");
-        QuickBean q3 = new QuickBean(89, "哈哈2");
+        QuickBean q1 = new QuickBean(7, "哈哈");
+        QuickBean q2 = new QuickBean(6, "哈哈1");
+        QuickBean q3 = new QuickBean(15, "哈哈2");
 
-        QuickBean q4 = new QuickBean(-5, "哈哈0");
-        QuickBean q5 = new QuickBean(28, "哈哈3");
-        QuickBean q6 = new QuickBean(0, "哈哈4");
-        QuickBean q7 = new QuickBean(25, "哈哈");
+        QuickBean q4 = new QuickBean(4, "哈哈0");
+        QuickBean q5 = new QuickBean(3, "哈哈3");
+        QuickBean q6 = new QuickBean(89, "哈哈4");
+        QuickBean q7 = new QuickBean(1, "哈哈");
 
         QuickBean[]   ss = {q1, q2, q3, q4, q5, q6};//获取一个数组
 
-        FastSort(ss,0,5);
-        for (int i = 0; i < ss.length; i++) {
-            System.out.println(ss[i].toString());
-        }
+       // FastSort(ss,0,5);
+//        for (int i = 0; i < ss.length; i++) {
+//            System.out.println(ss[i].toString());
+//        }
 
         List<QuickBean> list=new ArrayList<>();
         list.add(q1);
@@ -117,14 +117,16 @@ public class QuickSortTest {
         int end = high;
         QuickBean qb;
 
-        while (start != end) {
-            //顺序很重要，要从右边开始找
-            while (list.get(end).qucikNum >=list.get(low).qucikNum && start < end) {
-                end--;
-            }
+        while (true) {
 
-            while (list.get(start).qucikNum <= list.get(low).qucikNum && start < end) {
+
+
+            while (list.get(start).qucikNum <= list.get(low).qucikNum &&start<high) {
                 start++;
+            }
+            //顺序很重要，要从右边开始找
+            while (list.get(end).qucikNum >=list.get(low).qucikNum  &&end>low) {
+                end--;
             }
             //交换
             if (start < end) {
@@ -135,7 +137,10 @@ public class QuickSortTest {
 //                list.remove(end + 1);
                 list.set(start,list.get(end));
                 list.set(end,qb);
+            }else{
+                break;
             }
+
 
         }
         //最终将基准数归位,将start 和 low 互换
@@ -146,10 +151,10 @@ public class QuickSortTest {
 //        list.add(low,qb) ;
 //        list.remove(low + 1);
 
-        list.set(start,list.get(low));
+        list.set(end,list.get(low));
         list.set(low,qb);
-        FastSortList( list,low,  start-1);//继续处理左边的
-        FastSortList( list, start+1,  high);//继续处理右边的
+        FastSortList( list,low,  end-1);//继续处理左边的
+        FastSortList( list, end+1,  high);//继续处理右边的
         return;
 
     }

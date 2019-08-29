@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorf4f4f4"
+    android:gravity="center"
+
+    >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/margin20"
+            android:drawableTop="@mipmap/basemodule_no_data"
+            android:gravity="center"
+            android:text="暂无相关内容哟~"
+            android:textColor="@color/color555555"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text17" />
+
+</FrameLayout>
