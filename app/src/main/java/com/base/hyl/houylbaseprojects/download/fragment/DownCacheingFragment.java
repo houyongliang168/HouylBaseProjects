@@ -25,7 +25,6 @@ import com.base.common.loadmanager.owncallback.EmptyCallback;
 import com.base.common.loadmanager.owncallback.ErrorCallback;
 import com.base.common.log.MyLog;
 import com.base.common.log.MyToast;
-import com.base.common.store.SPUtil;
 import com.base.common.utils.NetUtils;
 import com.base.hyl.houylbaseprojects.App;
 import com.base.hyl.houylbaseprojects.Constant;
@@ -293,8 +292,9 @@ public class DownCacheingFragment extends CoreBaseFragment<DowningFragmentPresen
      */
 
     public boolean showNetDialog() {
-        SPUtil spUtils = new SPUtil("autoLogin");
-        boolean isGLoad = spUtils.getBoolean("isGLoad");
+//        SPUtil spUtils = new SPUtil("autoLogin");
+//        boolean isGLoad = spUtils.getBoolean("isGLoad");
+        boolean isGLoad = false;
         if (isGLoad) {
             MyToast.showShort("您已允许4G下载视频");
             return true;

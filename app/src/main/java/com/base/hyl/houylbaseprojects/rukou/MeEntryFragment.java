@@ -24,7 +24,8 @@ import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
 import com.base.hyl.houylbaseprojects.rukou.contract.IAgentContract;
 import com.base.hyl.houylbaseprojects.rukou.present.AgentPresenter;
 
-import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity;
+
+import com.base.hyl.houylbaseprojects.video.FullscreenActivity;
 import com.base.widget.recycler.RecyclerViewClickListener;
 
 
@@ -112,6 +113,11 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
 
 //                        Intent intent = new Intent(getActivity(), LiveCacheActivity.class);
 //                        getActivity().startActivity(intent);
+                        break;
+                    case "10005":
+                        getActivity().startActivity(new Intent(getActivity(), FullscreenActivity.class));
+
+
                         break;
                     default:
                         break;

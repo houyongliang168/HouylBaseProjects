@@ -8,10 +8,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
 
-
 import com.base.common.log.MyToast;
 import com.base.common.net.NetWorkStateChange;
-import com.base.common.store.SPUtil;
 import com.base.hyl.houylbaseprojects.download.core.callback.DownloadManager;
 import com.base.hyl.houylbaseprojects.download.core.config.Config;
 import com.base.hyl.houylbaseprojects.download.core.db.DownloadDBController;
@@ -99,8 +97,9 @@ public class DownloadService extends Service {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void showNetWorkChangeDialog(NetWorkStateChange netWorkStateChange) {
         if (netWorkStateChange.getConnectType() == ConnectivityManager.TYPE_MOBILE) {
-            SPUtil spUtils = new SPUtil("autoLogin");
-            boolean isGLoad = spUtils.getBoolean("isGLoad");
+          //  SPUtil spUtils = new SPUtil("autoLogin");
+         //   boolean isGLoad = spUtils.getBoolean("isGLoad");
+            boolean isGLoad = false;
             if (isGLoad) {
                 MyToast.showLong("您已允许4G环境下载视频");
             } else {

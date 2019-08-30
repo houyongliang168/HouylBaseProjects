@@ -95,8 +95,8 @@ ext {
             "fresco"               : "com.facebook.fresco:fresco:${fresco_v}",
 
             "eventbus"             : "org.greenrobot:eventbus:${eventbus_v}",
-            "jpush"                : "cn.jiguang.sdk:jpush:${jpush_v}",
-            "jcore"                : "cn.jiguang.sdk:jcore:${jcore_v}",
+           // "jpush"                : "cn.jiguang.sdk:jpush:${jpush_v}",
+           // "jcore"                : "cn.jiguang.sdk:jcore:${jcore_v}",
             "FlycoTabLayout_Lib"   : "com.flyco.tablayout:FlycoTabLayout_Lib:${FlycoTabLayout_Lib_v}",
             "DanmakuFlameMaster"   : "com.github.ctiao:DanmakuFlameMaster:${DanmakuFlameMaster_v}",
             "commons_codec"        : "commons-codec:commons-codec:${commons_codec_v}",//加密与编码
