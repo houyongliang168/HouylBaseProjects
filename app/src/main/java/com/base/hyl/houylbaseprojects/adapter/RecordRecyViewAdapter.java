@@ -25,6 +25,8 @@ public class RecordRecyViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private List<StaffRecordBean> list;//展示数据
 
 
+
+
     public RecordRecyViewAdapter(Context mContext, List<StaffRecordBean> list) {
         this.list = list;
         this.mContext = mContext;
