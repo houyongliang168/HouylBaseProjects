@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.base.hyl.houylbaseprojects">
-
     <!-- 高德需要权限开始 -->
     <!-- 用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
@@ -65,10 +64,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".OtherActivity"
+            android:label="@string/title_activity_other"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NewPeopleActivity"
+            android:label="@string/title_activity_new_people"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".video.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".Main2Activity"
@@ -78,7 +89,7 @@
         <activity
             android:name=".Main3Activity"
             android:label="@string/title_activity_main3"
-            android:theme="@style/AppTheme.NoActionBar"></activity> <!-- <service -->
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- <service -->
         <!-- android:process=":remote" -->
         <!-- android:name="com.base.hyl.houylbaseprojects.server.MyService" -->
         <!-- android:enabled="true" -->
@@ -117,13 +128,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!--<provider-->
-            <!--android:name=".ContentProvider.BookProvider"-->
-            <!--android:authorities=".ContentProvider.BookProvider"-->
-            <!--android:process=":provider" />-->
-
+        </activity> <!-- <provider -->
+        <!-- android:name=".ContentProvider.BookProvider" -->
+        <!-- android:authorities=".ContentProvider.BookProvider" -->
+        <!-- android:process=":provider" /> -->
         <receiver android:name=".broadcastReceiver.PlayMusicReceiver">
             <intent-filter>
                 <action android:name="android.service.notification.playandpause" />

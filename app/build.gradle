@@ -33,8 +33,6 @@ android {
 }
 
 
-
-
 greendao {
     schemaVersion 2
     daoPackage 'com.base.hyl.houylbaseprojects.db'
@@ -48,5 +46,6 @@ dependencies {
     implementation 'org.greenrobot:greendao-generator:3.1.0'
     implementation 'org.greenrobot:eventbus:3.0.0'
 
-   // implementation 'com.android.support:support-v4:28.0.0'
+    // implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
 }

@@ -18,7 +18,9 @@ import android.widget.RemoteViews;
 
 import com.base.common.base.CoreBaseFragment;
 import com.base.hyl.houylbaseprojects.Main2Activity;
+import com.base.hyl.houylbaseprojects.NewPeopleActivity;
 import com.base.hyl.houylbaseprojects.R;
+import com.base.hyl.houylbaseprojects.ScrollingActivity;
 import com.base.hyl.houylbaseprojects.aidl.BookManagerActivity;
 import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
 import com.base.hyl.houylbaseprojects.rukou.contract.IAgentContract;
@@ -89,7 +91,7 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
                     return;
                 }
                 switch (list.get(positions).getKey()) {
-                    case "10001":/*10001 代办保全*/
+                    case "10001":/*10001 */
                         Intent intent_one = new Intent(getContext(), BookManagerActivity.class);
                         intent_one.putExtra("TAG", "1");//设置标识 展示不同 的抬头
                         startActivity(intent_one);
@@ -116,6 +118,12 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
                         break;
                     case "10005":
                         getActivity().startActivity(new Intent(getActivity(), FullscreenActivity.class));
+
+
+                        break;
+                    case "10006":
+//                        getActivity().startActivity(new Intent(getActivity(), NewPeopleActivity.class));
+                        getActivity().startActivity(new Intent(getActivity(), ScrollingActivity.class));
 
 
                         break;
