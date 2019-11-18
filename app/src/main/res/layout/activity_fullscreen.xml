@@ -20,15 +20,23 @@
         android:text="akjdflkjakdfalkjdflkajfd "
         android:textColor="#33b5e5"
         android:textSize="50sp"
+        android:visibility="visible"
         android:textStyle="bold" />
+
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
     <FrameLayout
+        android:id="@+id/fl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
-
+        <TextureView
+            android:id="@+id/textureView_fullscreen_content"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:visibility="gone"
+            android:background="@color/color333333"></TextureView>
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
             style="?metaButtonBarStyle"

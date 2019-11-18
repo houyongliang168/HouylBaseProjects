@@ -17,11 +17,14 @@ import android.view.WindowManager;
 import android.widget.RemoteViews;
 
 import com.base.common.base.CoreBaseFragment;
+import com.base.common.log.MyLog;
 import com.base.hyl.houylbaseprojects.Main2Activity;
 import com.base.hyl.houylbaseprojects.NewPeopleActivity;
 import com.base.hyl.houylbaseprojects.R;
 import com.base.hyl.houylbaseprojects.ScrollingActivity;
+import com.base.hyl.houylbaseprojects.ScrollingActivity2;
 import com.base.hyl.houylbaseprojects.aidl.BookManagerActivity;
+import com.base.hyl.houylbaseprojects.camera.H5FrontFacingCameraFunction;
 import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
 import com.base.hyl.houylbaseprojects.rukou.contract.IAgentContract;
 import com.base.hyl.houylbaseprojects.rukou.present.AgentPresenter;
@@ -118,12 +121,13 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
                         break;
                     case "10005":
                         getActivity().startActivity(new Intent(getActivity(), FullscreenActivity.class));
-
+                       boolean isCamera2= H5FrontFacingCameraFunction.hasCamera2(getActivity());
+                        MyLog.wtf(TAG,isCamera2+"");
 
                         break;
                     case "10006":
 //                        getActivity().startActivity(new Intent(getActivity(), NewPeopleActivity.class));
-                        getActivity().startActivity(new Intent(getActivity(), ScrollingActivity.class));
+                        getActivity().startActivity(new Intent(getActivity(), ScrollingActivity2.class));
 
 
                         break;

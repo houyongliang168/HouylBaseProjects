@@ -44,7 +44,14 @@ public class App extends MultiDexApplication {
         closeAndroidPDialog();// 解决小米MIUI在Android9.0系统上app调用私有API的弹窗警告
 
         mContext = this;
-
+        try {
+            Class<?> multidex = Class.forName("android.support.multidex.MultiDex");
+            Method install = multidex.getMethod("install", Context.class);
+            install.invoke(null, mContext);
+            MultiDex.install(this);
+        } catch (Exception e) {
+            MyLog.wtf("zcc", e.getMessage());
+        }
         Logger.init();
 
 

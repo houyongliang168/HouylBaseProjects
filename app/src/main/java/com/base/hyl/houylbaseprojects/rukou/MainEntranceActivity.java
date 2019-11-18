@@ -38,7 +38,7 @@ public class MainEntranceActivity extends AppCompatActivity {
         initData();
         vp_control_srcoll.setAdapter(new PagerAdapter(getSupportFragmentManager()));
         tab.setViewPager(vp_control_srcoll);
-        
+
     }
 
     private void initEvent() {
