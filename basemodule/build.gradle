@@ -23,7 +23,17 @@ android {
             buildConfigField 'boolean','IS_DEBUG','true'
             buildConfigField("int", "INTERNET_REQUEST_TIME", "30000")//网络请求时间      30s
         }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
 
+
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 
 

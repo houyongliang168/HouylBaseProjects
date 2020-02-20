@@ -30,7 +30,7 @@ public class TextViewActivity extends BaseActivity {
 
     private TextView mTextView;
 
-    private String wb_simple="<font color='#FF0000'>新年伊始，泰康推出齿科检查关爱活动</font>：<a href='http://www.baidu.com'>泰康自成立泰康拜博口腔以来</a>，特对泰康客户推出齿科检查关爱活动，价格聚划算，<font color='#FF0000'>2019服务客户，从齿科关爱开始</font>！";
+    private String wb_simple="<font color='#FF0000'>新年伊始，关爱活动</font>：<a href='http://www.baidu.com'>泰康自成立泰康拜博口腔以来</a>，特对泰康客户推出齿科检查关爱活动，价格聚划算，<font color='#FF0000'>2019服务客户，从齿科关爱开始</font>！";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class TextViewActivity extends BaseActivity {
     }
 
     private SpannableString dealWithText(String result) {
-//        result = "关注泰康人寿官微后，点击<a href=\"https://www.baidu.com\"></a> 啦啦啦啦啦";
         if (result == null) {
             return new SpannableString("");
         }

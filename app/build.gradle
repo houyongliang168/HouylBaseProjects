@@ -8,17 +8,20 @@ android {
 
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion cfg.buildToolsVersion
+    dexOptions {//Dex 选项配置
+        jumboMode = true //代码超过 65535 ，开启才能构建成功
+    }
     defaultConfig {
-//        applicationId appId["app"]
         applicationId appId.app
         minSdkVersion cfg.minSdkVersion  //最低sdk 版本
         targetSdkVersion cfg.targetSdkVersion //目标sdk 版本
         versionCode cfg.versionCode//更新次数
         versionName cfg.versionName//版本号
-
+        multiDexEnabled true
 //        //添加如下配置就OK了
 //        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
         release {
@@ -26,43 +29,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    //暂时不处理 20190122
-    productFlavors {
-//        cloud {
-//            //云部署版本
-//            resValue "string", "app_name", "MyLuban"
-//            resValue "string", "app_scheme", "bv4phone"
-//            resValue "string", "app_link_scheme", "cloud"
-//            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
-//manifestPlaceholders 可以替换 清单文件中的标签
-        /*例如 设置不同的内容  其源码是map 集合*/
-//            manifestPlaceholders = [
-//                    JPUSH_PKGNAME: applicationId,
-//                    JPUSH_APPKEY : "a6d4d20aa61934aeee", //JPush上注册的包名对应的appkey.
-//                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
-//            ]
-    }
-//        entp {
-//            //appid 拼接，实现多个版本
-//            applicationIdSuffix ".entp"
-//            resValue "string", "app_name", "MyLuban企业版"//重新设置 app_name 的值
-//            resValue "string", "app_scheme", "bv4phoneentp"
-//            resValue "string", "app_link_scheme", "entp"
-//            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
-//            manifestPlaceholders = [
-//                    JPUSH_PKGNAME: applicationId,
-//                    JPUSH_APPKEY : "a6d4d20aa61934aettt", //JPush上注册的包名对应的appkey.
-//                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
-//            ]
-//        }
-//    }
 
     dataBinding {
         enabled = true
     }
-/*greendao 配置*/
-
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
+
+
 greendao {
     schemaVersion 2
     daoPackage 'com.base.hyl.houylbaseprojects.db'
@@ -74,8 +51,9 @@ dependencies {
     implementation project(':basemodule')
     implementation 'org.greenrobot:greendao:3.1.0'
     implementation 'org.greenrobot:greendao-generator:3.1.0'
-    // 添加 RePlugin Plugin Library 依赖
-   // implementation(project(':downlibrary')) {
-   //     exclude group: 'com.google.code.findbugs', module: 'jsr305'
-   // }
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.android.support:multidex:1.0.1'
+    // implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'com.yanzhenjie:permission:2.0.0-rc4'
 }

@@ -37,6 +37,11 @@ android {
 
         //执行单元测试时指定的Runner，在正式打包时并不会使用到
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
 
     }
 
@@ -60,6 +65,10 @@ android {
                 }
             }
         }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 
 

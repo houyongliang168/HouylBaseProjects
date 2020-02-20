@@ -19,4 +19,6 @@ public class Constant {
     public static final String GET_DATA_SUCCESS = "0";//成功
     /*测试一下  */
     public static final int MSG_FROM_CLIENT=1;
+    public static final String DOWNLOAD_PATH = "/storage/emulated/0/hyl/";//下载文件夹的地址
+
 }

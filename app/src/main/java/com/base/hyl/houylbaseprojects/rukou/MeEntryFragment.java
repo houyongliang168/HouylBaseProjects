@@ -1,42 +1,40 @@
 package com.base.hyl.houylbaseprojects.rukou;
 
 import android.annotation.SuppressLint;
-import android.app.AppOpsManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RemoteViews;
 
 import com.base.common.base.CoreBaseFragment;
-import com.base.common.log.MyToast;
+import com.base.common.log.MyLog;
 import com.base.hyl.houylbaseprojects.Main2Activity;
-import com.base.hyl.houylbaseprojects.MainActivity;
+import com.base.hyl.houylbaseprojects.NewPeopleActivity;
 import com.base.hyl.houylbaseprojects.R;
+import com.base.hyl.houylbaseprojects.ScrollingActivity;
+import com.base.hyl.houylbaseprojects.ScrollingActivity2;
 import com.base.hyl.houylbaseprojects.aidl.BookManagerActivity;
-import com.base.hyl.houylbaseprojects.broadcastReceiver.PlayMusicReceiver;
+import com.base.hyl.houylbaseprojects.camera.H5FrontFacingCameraFunction;
 import com.base.hyl.houylbaseprojects.rukou.bean.AgentBean;
 import com.base.hyl.houylbaseprojects.rukou.contract.IAgentContract;
 import com.base.hyl.houylbaseprojects.rukou.present.AgentPresenter;
 
-import com.base.hyl.houylbaseprojects.xiazai.activity.LiveCacheActivity2;
+
+import com.base.hyl.houylbaseprojects.video.FullscreenActivity;
 import com.base.widget.recycler.RecyclerViewClickListener;
 
 
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -96,7 +94,7 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
                     return;
                 }
                 switch (list.get(positions).getKey()) {
-                    case "10001":/*10001 代办保全*/
+                    case "10001":/*10001 */
                         Intent intent_one = new Intent(getContext(), BookManagerActivity.class);
                         intent_one.putExtra("TAG", "1");//设置标识 展示不同 的抬头
                         startActivity(intent_one);
@@ -116,9 +114,22 @@ public class MeEntryFragment extends CoreBaseFragment<AgentPresenter> implements
                         break;
                     case "10004":/*10004 测试下载*/
 
+                        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 
-                        Intent intent = new Intent(getActivity(), LiveCacheActivity2.class);
-                        getActivity().startActivity(intent);
+//                        Intent intent = new Intent(getActivity(), LiveCacheActivity.class);
+//                        getActivity().startActivity(intent);
+                        break;
+                    case "10005":
+                        getActivity().startActivity(new Intent(getActivity(), FullscreenActivity.class));
+                       boolean isCamera2= H5FrontFacingCameraFunction.hasCamera2(getActivity());
+                        MyLog.wtf(TAG,isCamera2+"");
+
+                        break;
+                    case "10006":
+//                        getActivity().startActivity(new Intent(getActivity(), NewPeopleActivity.class));
+                        getActivity().startActivity(new Intent(getActivity(), ScrollingActivity2.class));
+
+
                         break;
                     default:
                         break;

@@ -6,10 +6,10 @@ import android.support.multidex.MultiDexApplication;
 
 import com.base.common.log.MyLog;
 import com.base.common.utils.ApplicationTool;
-import com.base.hyl.houylbaseprojects.db.DaoMaster;
-import com.base.hyl.houylbaseprojects.db.DaoSession;
+
 import com.base.widget.smartRefresh.MyRefreshFooter;
 import com.base.widget.smartRefresh.MyRefreshHeader;
+
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
@@ -44,8 +44,16 @@ public class App extends MultiDexApplication {
         closeAndroidPDialog();// 解决小米MIUI在Android9.0系统上app调用私有API的弹窗警告
 
         mContext = this;
-
+        try {
+            Class<?> multidex = Class.forName("android.support.multidex.MultiDex");
+            Method install = multidex.getMethod("install", Context.class);
+            install.invoke(null, mContext);
+            MultiDex.install(this);
+        } catch (Exception e) {
+            MyLog.wtf("zcc", e.getMessage());
+        }
         Logger.init();
+
 
     }
 
@@ -186,33 +194,8 @@ public class App extends MultiDexApplication {
         });
     }
 
-    private static DaoSession daoSession;
-    private static DaoMaster daoMaster;
 
-    public static DaoSession getDaoSession() {
-        if (mContext == null) {
-            mContext = ApplicationTool.getInstance().getApplication();
-        }
-        if (daoSession == null && mContext != null) {
-            if (daoSession == null) {
-                daoMaster = getDaoMaster(mContext);
-            }
-            daoSession = daoMaster.newSession();
-        }
-        return daoSession;
-    }
 
-    /**
-     * 取得DaoMaster
-     *
-     * @return
-     */
-    public static DaoMaster getDaoMaster(Context context) {
-        if (daoMaster == null) {
-            DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(context, "houyl-db", null);
-            daoMaster = new DaoMaster(helper.getWritableDatabase());
-        }
-        return daoMaster;
-    }
+
 
 }

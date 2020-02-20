@@ -6,7 +6,7 @@
 ext {
     android = [
             compileSdkVersion: 28,
-            minSdkVersion    : 19,
+            minSdkVersion    : 21,
             targetSdkVersion : 22,
             buildToolsVersion: "28.0.3",
             versionCode      : 1,
@@ -23,12 +23,9 @@ ext {
             "release": "releaseUrl"
     ]
 
+
     //Version
-
-
-    _logger_v = "1.12"
     supportLibrary = "26.1.0"
-    layout_v="1.1.0"
     statusBarCompat_v = "2.1.3"
     butterknife_v = "8.4.0"
     rxjava_v = "1.2.9"
@@ -45,6 +42,7 @@ ext {
     jcore_v = "1.1.2"
     FlycoTabLayout_Lib_v = "2.1.2@aar"
     DanmakuFlameMaster_v = "0.5.3"
+    _logger_v = "1.12"
     green_dao_v = "3.2.2"
     greendao_generator_v = "3.1.0"
     PickerView_v = "3.2.5"
@@ -63,25 +61,27 @@ ext {
     stetho_v = "1.3.1"
     subsampling_v = "3.4.1"
     filedownloader_v = "1.6.9"
-    router_v = "1.1.1"
-    layout_v = "1.0.2"
-    androidTestCompile_v = "2.2.2"
-    glide_transformations_v = "2.0.2"
-    SmartRefreshLayout_Lib_v="1.1.0-alpha-3"
+    router_v="1.1.1"
+    layout_v="1.1.0"
+    androidTestCompile_v="2.2.2"
+    glide_transformations_v1="2.0.2"
+    plugin_lib_v="2.2.4"
+    SmartRefreshLayout_v="1.1.0-alpha-3"
   
 
     dependencies = [
             "multidex"             : "com.android.support:multidex:1.0.2",
-            "cardview"             : "com.android.support:cardview-v7:${supportLibrary}",
-            "recyclerview"         : "com.android.support:recyclerview-v7:${supportLibrary}",
-            "suppoutDesign"        : "com.android.support:design:${supportLibrary}",
             "appcompat"            : "com.android.support:appcompat-v7:${supportLibrary}",
             "layout"               : "com.android.support.constraint:constraint-layout:${layout_v}",
+            "recyclerview"         : "com.android.support:recyclerview-v7:${supportLibrary}",
+            "suppoutDesign"        : "com.android.support:design:${supportLibrary}",
+            "cardview"             : "com.android.support:cardview-v7:${supportLibrary}",
             "support"              : "com.android.support:support-v4:${supportLibrary}",
 
-
+            "butterknife"          : "com.jakewharton:butterknife:${butterknife_v}",
+            "butterknife_compiler" : "com.jakewharton:butterknife-compiler:${butterknife_v}",
             "okhttp_urlconnection" : "com.squareup.okhttp3:okhttp-urlconnection:${okhttp_urlconnection_v}",
-            "okhttp3_integration"  : "com.github.bumptech.glide:okhttp3-integration:${okhttp3_integration_v}",
+
             "rxjava"               : "io.reactivex:rxjava:${rxjava_v}",
             "rxandroid"            : "io.reactivex:rxandroid:${rxandroid_v}",
             "retrofit"             : "com.squareup.retrofit2:retrofit:${retrofit_v}",
@@ -89,41 +89,43 @@ ext {
             "converter_scalars"    : "com.squareup.retrofit2:converter-scalars:${converter_scalars_v}",
             "adapter_rxjava"       : "com.squareup.retrofit2:adapter-rxjava:${retrofit_v}",
             "logging_interceptor"  : "com.squareup.okhttp3:logging-interceptor:${logging_interceptor_v}",
-            "glide-transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}",
-            "_logger"              : "com.github.orhanobut:logger:${_logger_v}",
-            "glide"                : "com.github.bumptech.glide:glide:${glide_v}",
-            "glide_transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}",
 
+            "xbanner"              : "com.xhb:xbanner:${xbanner_v}",
+            "nineoldandroids"      : "com.nineoldandroids:library:${nineoldandroids_v}",
+            "fresco"               : "com.facebook.fresco:fresco:${fresco_v}",
 
+            "eventbus"             : "org.greenrobot:eventbus:${eventbus_v}",
+           // "jpush"                : "cn.jiguang.sdk:jpush:${jpush_v}",
+           // "jcore"                : "cn.jiguang.sdk:jcore:${jcore_v}",
             "FlycoTabLayout_Lib"   : "com.flyco.tablayout:FlycoTabLayout_Lib:${FlycoTabLayout_Lib_v}",
-            "SmartRefreshLayout"   : "com.scwang.smartrefresh:SmartRefreshLayout:${SmartRefreshLayout_Lib_v}",            //            "butterknife"          : "com.jakewharton:butterknife:${butterknife_v}",
-//            "xbanner"              : "com.xhb:xbanner:${xbanner_v}",
-//            "nineoldandroids"      : "com.nineoldandroids:library:${nineoldandroids_v}",
-//            "fresco"               : "com.facebook.fresco:fresco:${fresco_v}",
+            "DanmakuFlameMaster"   : "com.github.ctiao:DanmakuFlameMaster:${DanmakuFlameMaster_v}",
+            "commons_codec"        : "commons-codec:commons-codec:${commons_codec_v}",//加密与编码
+            "_logger"              : "com.github.orhanobut:logger:${_logger_v}",
+            "greendao"             : "org.greenrobot:greendao:${green_dao_v}",
+            "greendao_generator"   : "org.greenrobot:greendao-generator:${greendao_generator_v}",
+            "PickerView"           : "com.contrarywind:Android-PickerView:${PickerView_v}",
+            "rxpermissions"        : "com.tbruyelle.rxpermissions:rxpermissions:${rxpermissions_v}",
+            "RecordWave"           : "com.github.CarGuo:RecordWave:${RecordWave_v}",
+            "MPAndroidChart"       : "com.github.PhilJay:MPAndroidChart:${MPAndroidChart_v}",
+            "DatePicker"           : "cn.aigestudio.datepicker:DatePicker:${DatePicker_v}",
+            "numberprogressbar"    : "com.daimajia.numberprogressbar:library:${numberprogressbar_v}",
+            "fastjson"             : "com.alibaba:fastjson:${fastjson_v}",
+            "imagepicker"          : "com.lzy.widget:imagepicker:${imagepicker_v}",
+            "stetho"               : "com.facebook.stetho:stetho:${stetho_v}",
+            "NumberPickerView"     : "cn.carbswang.android:NumberPickerView:${NumberPickerView_v}",
+            "subsampling"          : "com.davemorrissey.labs:subsampling-scale-image-view:${subsampling_v}",
+            "filedownloader"       : "com.liulishuo.filedownloader:library:${filedownloader_v}",
 
-//            "eventbus"             : "org.greenrobot:eventbus:${eventbus_v}",
-//            "jpush"                : "cn.jiguang.sdk:jpush:${jpush_v}",
-//            "jcore"                : "cn.jiguang.sdk:jcore:${jcore_v}",
-//            "FlycoTabLayout_Lib"   : "com.flyco.tablayout:FlycoTabLayout_Lib:${FlycoTabLayout_Lib_v}",
-//            "DanmakuFlameMaster"   : "com.github.ctiao:DanmakuFlameMaster:${DanmakuFlameMaster_v}",
-//            "commons_codec"        : "commons-codec:commons-codec:${commons_codec_v}",
-
-//            "greendao"             : "org.greenrobot:greendao:${green_dao_v}",
-//            "greendao_generator"   : "org.greenrobot:greendao-generator:${greendao_generator_v}"
-//            "PickerView"           : "com.contrarywind:Android-PickerView:${PickerView_v}",
-//            "rxpermissions"        : "com.tbruyelle.rxpermissions:rxpermissions:${rxpermissions_v}",
-//            "RecordWave"           : "com.github.CarGuo:RecordWave:${RecordWave_v}",
-//            "MPAndroidChart"       : "com.github.PhilJay:MPAndroidChart:${MPAndroidChart_v}",
-//            "DatePicker"           : "cn.aigestudio.datepicker:DatePicker:${DatePicker_v}",
-//            "numberprogressbar"    : "com.daimajia.numberprogressbar:library:${numberprogressbar_v}",
-//            "fastjson"             : "com.alibaba:fastjson:${fastjson_v}",
-//            "imagepicker"          : "com.lzy.widget:imagepicker:${imagepicker_v}",
-//            "stetho"               : "com.facebook.stetho:stetho:${stetho_v}",
-//            "NumberPickerView"     : "cn.carbswang.android:NumberPickerView:${NumberPickerView_v}",
-//            "subsampling"          : "com.davemorrissey.labs:subsampling-scale-image-view:${subsampling_v}",
-//            "filedownloader"       : "com.liulishuo.filedownloader:library:${filedownloader_v}",
+            "glide"                : "com.github.bumptech.glide:glide:${glide_v}",
+            "glide_transformations": "jp.wasabeef:glide-transformations:${glide_transformations_v1}",
+            "okhttp3_integration"  : "com.github.bumptech.glide:okhttp3-integration:${okhttp3_integration_v}",
+            "glidetransformations": "jp.wasabeef:glide-transformations:${glide_transformations_v}",
 
 
+            "SmartRefreshLayout": "com.scwang.smartrefresh:SmartRefreshLayout:${SmartRefreshLayout_v}",   /* 刷新控件*/
+
+
+            "plugin_lib": "com.qihoo360.replugin:replugin-plugin-lib:${plugin_lib_v}"
     ]
 
 }
