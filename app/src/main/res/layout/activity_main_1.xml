@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="测试"
+        android:visibility="gone"
         />
     <!--按钮 在 旁白  挤不出去-->
     <TextView
@@ -24,7 +25,7 @@
         android:maxLines="1"
         android:textColor="#333333"
         android:textSize="@dimen/text16"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constrainedWidth="true"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -43,76 +44,79 @@
         android:background="@color/colorff5722"
         android:padding="2dp"
         android:text="今日"
+        android:visibility="gone"
         android:textColor="@color/colorff5722"
         android:textSize="@dimen/text12"
         app:layout_constrainedWidth="true"
         app:layout_constraintLeft_toRightOf="@+id/iv_ybsq_name"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <!--<Button-->
-    <!--android:id="@+id/bt_1"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"-->
-    <!--app:layout_constrainedWidth="true"-->
-    <!--app:layout_constraintHorizontal_bias="0"-->
-    <!--android:maxLines="1"-->
-    <!--android:ellipsize="end"-->
-    <!--app:layout_constraintHorizontal_chainStyle="packed"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toLeftOf="@+id/bt_2"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
+<!--    <Button-->
+<!--    android:id="@+id/bt_1"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"-->
+<!--    app:layout_constrainedWidth="true"-->
+<!--    app:layout_constraintHorizontal_bias="0"-->
+<!--    android:maxLines="1"-->
+<!--    android:ellipsize="end"-->
+<!--        android:visibility="gone"-->
+<!--    app:layout_constraintHorizontal_chainStyle="packed"-->
+<!--    app:layout_constraintLeft_toLeftOf="parent"-->
+<!--    app:layout_constraintRight_toLeftOf="@+id/bt_2"-->
+<!--    app:layout_constraintTop_toTopOf="parent" />-->
 
-    <!--<Button-->
-    <!--android:id="@+id/bt_2"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="BBBBBBBBBBBbbbbbbb"-->
-    <!--app:layout_constrainedWidth="true"-->
-    <!--app:layout_constraintLeft_toRightOf="@+id/bt_1"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
+<!--    <Button-->
+<!--    android:id="@+id/bt_2"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="BBBBBBBBBBBbbbbbbb"-->
+<!--    app:layout_constrainedWidth="true"-->
+<!--        android:visibility="gone"-->
+<!--    app:layout_constraintLeft_toRightOf="@+id/bt_1"-->
+<!--    app:layout_constraintRight_toRightOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent" />-->
 
-    <!--<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginLeft="@dimen/margin10"-->
-    <!--android:layout_marginTop="15dp"-->
-    <!--android:orientation="horizontal">-->
-    <!--&lt;!&ndash;内容&ndash;&gt;-->
-    <!--<TextView-->
-    <!--android:id="@+id/iv_ybsq_name1"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="17dp"-->
-    <!--android:ellipsize="end"-->
-    <!--android:includeFontPadding="false"-->
-    <!--android:maxLines="1"-->
-    <!--android:textColor="#333333"-->
-    <!--android:textSize="@dimen/text16"-->
-    <!--android:visibility="visible"-->
-    <!--app:layout_constrainedWidth="true"-->
-    <!--app:layout_constraintHorizontal_bias="0"-->
-    <!--app:layout_constraintHorizontal_chainStyle="packed"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toLeftOf="@+id/tv_ybsq_date1"-->
-    <!--tools:text="测试一下效果测一一效果测一式 测一一效果测一式 测一一效果测一式 " />-->
-    <!--&lt;!&ndash;今日和明日展示按钮&ndash;&gt;-->
-    <!--&lt;!&ndash;&ndash;&gt;-->
-    <!--<TextView-->
-    <!--android:id="@+id/tv_ybsq_date1"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center_vertical"-->
-    <!--android:layout_marginLeft="9dp"-->
-    <!--android:layout_marginRight="9dp"-->
-    <!--android:background="#f72200"-->
-    <!--android:padding="2dp"-->
-    <!--android:text="今日"-->
-    <!--android:textColor="@color/colorff5722"-->
-    <!--android:textSize="@dimen/text12"-->
-    <!--app:layout_constraintLeft_toRightOf="@+id/iv_ybsq_name1"-->
-    <!--app:layout_constraintRight_toRightOf="parent" />-->
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin10"
+    android:layout_marginTop="15dp"
+    android:orientation="horizontal">
+    <!--内容-->
+    <TextView
+    android:id="@+id/iv_ybsq_name1"
+    android:layout_width="wrap_content"
+    android:layout_height="17dp"
+    android:ellipsize="end"
+    android:includeFontPadding="false"
+    android:maxLines="1"
+    android:textColor="#333333"
+    android:textSize="@dimen/text16"
+    android:visibility="visible"
+    app:layout_constrainedWidth="true"
+    app:layout_constraintHorizontal_bias="0"
+    app:layout_constraintHorizontal_chainStyle="packed"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toLeftOf="@+id/tv_ybsq_date1"
+    tools:text="测试一效果测afafdadfadfafadfadfadfadfadfadf效果测一式 " />
+    <!--今日和明日展示按钮-->
+    <!---->
+    <TextView
+    android:id="@+id/tv_ybsq_date1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_marginLeft="9dp"
+    android:layout_marginRight="9dp"
+    android:background="#f72200"
+    android:padding="2dp"
+    android:text="今日"
+    android:textColor="@color/colorff5722"
+    android:textSize="@dimen/text12"
+    app:layout_constraintLeft_toRightOf="@+id/iv_ybsq_name1"
+    app:layout_constraintRight_toRightOf="parent" />
 
-    <!--</android.support.constraint.ConstraintLayout>-->
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
